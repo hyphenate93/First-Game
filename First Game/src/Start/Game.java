@@ -116,4 +116,4 @@ public class Game extends Canvas implements Runnable {
 	}
 
 }
-// andreas är bög
+// andreas är bög väldigt
