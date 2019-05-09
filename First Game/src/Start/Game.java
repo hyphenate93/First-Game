@@ -21,7 +21,7 @@ public class Game extends Canvas implements Runnable {
 
 	//hippity hoppity women are property
 
-	//i dont assosiate with Ni
+	//i dont assosiate with Nig
 
 	
 	public Game() {
