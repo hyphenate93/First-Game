@@ -18,6 +18,8 @@ public class Game extends Canvas implements Runnable {
 	private Random r;
 	private HUD hud;
 
+	//fkn faggotry going on here dood
+	
 	public Game() {
 
 		handler = new Handler();
