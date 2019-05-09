@@ -19,7 +19,7 @@ public class Game extends Canvas implements Runnable {
 	private HUD hud;
 
 	//hippity hoppity women are property
-	//i dont assosiate with N
+	//i dont assosiate with Ni
 	
 	public Game() {
 
