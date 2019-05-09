@@ -2,13 +2,13 @@
 package Start;
 // niklas luktar daimkryss
 // This is fine * insert dog in burning house*
-
+//LångeMats
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
-
+//långemats
 public class Game extends Canvas implements Runnable {
 		// initiate game variables
 	private static final long serialVersionUID = 1550691097823471818L;
