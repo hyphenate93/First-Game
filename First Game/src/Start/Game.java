@@ -7,7 +7,7 @@ import java.awt.image.BufferStrategy;
 import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
-	// initate variables for game class
+
 	private static final long serialVersionUID = 1550691097823471818L;
 	public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
 	private Thread thread;
