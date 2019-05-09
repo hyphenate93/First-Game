@@ -1,6 +1,7 @@
 
 package Start;
 // niklas luktar daimkryss
+// This is fine * insert dog in burning house*
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -19,7 +20,6 @@ public class Game extends Canvas implements Runnable {
 	private HUD hud;
 
 	//hippity hoppity women are property
-	//i dont assosiate with N
 	
 	public Game() {
 
