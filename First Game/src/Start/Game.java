@@ -1,6 +1,6 @@
 
 package Start;
-//Rövsmör
+// niklas luktar daimkryss
 
 import java.awt.Canvas;
 import java.awt.Color;
