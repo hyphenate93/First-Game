@@ -18,7 +18,7 @@ public class Game extends Canvas implements Runnable {
 	private Random r;
 	private HUD hud;
 
-	//fkn faggotry going on here dood
+	//hippity hoppity women are property
 	
 	public Game() {
 
