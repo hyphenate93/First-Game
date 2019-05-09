@@ -36,7 +36,7 @@ public class Game extends Canvas implements Runnable {
 		thread.start();
 		running = true;
 	}
-//bög
+//bögarsel
 	public synchronized void stop() {
 		try {
 			thread.join();
