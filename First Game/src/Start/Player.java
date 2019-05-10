@@ -11,9 +11,10 @@ public class Player extends GameObject {
 	Random r = new Random();
 	Handler handler;
 	
-	public Player(int x, int y, ID id, Handler handler) {
+	public Player(int x, int y, ID id, int z, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
+		this.health = z;
 	
 	}
 	public Rectangle getBounds() {
@@ -38,10 +39,12 @@ public class Player extends GameObject {
 					
 					tempObject.setVelX(0);
 					tempObject.setVelY(0);
-					tempObject.setX(0);
-					tempObject.setY(0);
+					tempObject.setX(-6000);
+					tempObject.setY(-6000);
 					
-					//HUD.HEALTH --;
+					HUD.HEALTH --;
+					BasicEnemy.setHealth(0); 
+					
 				}
 				
 			}
