@@ -1,14 +1,12 @@
 
 package Start;
-// niklas luktar daimkryss
-// This is fine * insert dog in burning house*
-//LångeMats
+
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
-//långemats
+
 public class Game extends Canvas implements Runnable {
 		// initiate game variables
 	private static final long serialVersionUID = 1550691097823471818L;
@@ -19,9 +17,7 @@ public class Game extends Canvas implements Runnable {
 	private Random r;
 	private HUD hud;
 
-	//hippity hoppity women are property
 
-	//i dont assosiate with Ni
 
 	
 	public Game() {
@@ -42,7 +38,6 @@ public class Game extends Canvas implements Runnable {
 		thread.start();
 		running = true;
 	}
-//bögarsel
 	public synchronized void stop() {
 		try {
 			thread.join();
@@ -122,4 +117,3 @@ public class Game extends Canvas implements Runnable {
 	}
 
 }
-// andreas är bög väldigt
