@@ -1,8 +1,8 @@
-package betterTextAdventure;
+package betterText;
 
 public class Story {
 	
-	Game3 game;
+	Game game;
 	UI ui;
 	VisibilityManager vManager;
 	Player player = new Player();
@@ -10,7 +10,7 @@ public class Story {
 	
 	int silverRing;
 
-	public Story(Game3 game, UI ui, VisibilityManager vManager) {
+	public Story(Game game, UI ui, VisibilityManager vManager) {
 		
 		this.game = game;
 		this.ui = ui;

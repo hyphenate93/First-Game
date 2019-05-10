@@ -1,4 +1,4 @@
-package betterTextAdventure;
+package betterText;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import betterTextAdventure.Game3.ChoiceHandler;
+import betterText.Game.ChoiceHandler;
 
 
 public class UI {
@@ -27,8 +27,8 @@ public class UI {
 
 	// default font is to small, make two new ones, one for title and one for
 	// whatever text we are to use
-	Font titleFont = new Font("Times New Roman", Font.PLAIN, 90);
-	Font normalFont = new Font("Times New Roman", Font.PLAIN, 26);
+	Font titleFont = new Font("Times New Roman", Font.PLAIN, 55);
+	Font normalFont = new Font("Times New Roman", Font.PLAIN, 22);
 
 	public void createUI(ChoiceHandler cHandler) {
 
@@ -36,7 +36,7 @@ public class UI {
 		// window creation. set the size, decide on how to exit the program, set the
 		// background color and layout
 		window = new JFrame();
-		window.setSize(800, 600);
+		window.setSize(640, 480);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setBackground(Color.black);
 		window.setLayout(null);

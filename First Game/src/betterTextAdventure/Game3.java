@@ -3,7 +3,7 @@ package betterTextAdventure;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Game {
+public class Game3 {
 
 	ChoiceHandler cHandler = new ChoiceHandler();
 	UI ui = new UI();
@@ -14,11 +14,11 @@ public class Game {
 	
 	public static void main(String[] args) {
 		
-		new Game();
+		new Game3();
 		
 	}
 	
-	public Game() {
+	public Game3() {
 		
 		ui.createUI(cHandler);
 		story.defaultSetup();
