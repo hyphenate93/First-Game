@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 
 /*
- *  TODO
+ *  todo
  *  Item Class
  *  array[key] taken. key++
  *  Duplicate item. ItemCount ++
