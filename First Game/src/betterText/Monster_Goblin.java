@@ -1,3 +1,5 @@
+//Unused in this version.
+
 package betterText;
 
 public class Monster_Goblin extends SuperMonster {

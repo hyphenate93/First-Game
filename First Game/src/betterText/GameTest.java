@@ -3,12 +3,12 @@ package betterText;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Game {
+public class GameTest {
 
 	ChoiceHandler cHandler = new ChoiceHandler();
 	UI ui = new UI();
-	VisibilityManager vm = new VisibilityManager(ui);
-	Story story = new Story(this, ui, vm);
+	VisibilityManager vManager = new VisibilityManager(ui);
+	Story story = new Story(this, ui, vManager);
 	
 	String nextPosition1, nextPosition2, nextPosition3, nextPosition4;
 	
@@ -16,15 +16,15 @@ public class Game {
 	
 	public static void main(String[] args) {
 		
-		new Game();
+		new GameTest();
 		
 	}
 	
-	public Game() {
+	public GameTest() {
 		
 		ui.createUI(cHandler);
 		story.defaultSetup();
-		vm.showTitleScreen();
+		vManager.showTitleScreen();
 		
 	}
 	
@@ -35,7 +35,7 @@ public class Game {
 			String yourChoice = event.getActionCommand();
 			
 			switch(yourChoice) {
-			case "start": vm.titleToTown(); story.townGate(); break;
+			case "start": vManager.characterCreation(); story.charCreate(); break;
 			case "c1": story.selectPosition(nextPosition1); break;
 			case "c2": story.selectPosition(nextPosition2); break;
 			case "c3": story.selectPosition(nextPosition3); break;

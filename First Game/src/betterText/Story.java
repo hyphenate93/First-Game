@@ -1,16 +1,21 @@
 package betterText;
 
+import Start.Game;
+
 public class Story {
 	
-	Game game;
+	GameTest game;
 	UI ui;
 	VisibilityManager vManager;
 	Player player = new Player();
 	SuperMonster monster = new SuperMonster();
 	
-	int silverRing;
+	Hero hero = null;
+	ClassGreenRoom grnRoom = new ClassGreenRoom();
+	Weapon weapon;
+	
 
-	public Story(Game game, UI ui, VisibilityManager vManager) {
+	public Story(GameTest game, UI ui, VisibilityManager vManager) {
 		
 		this.game = game;
 		this.ui = ui;
@@ -19,274 +24,135 @@ public class Story {
 	}
 	
 	public void defaultSetup() {
+	
+		ui.hpLabelNumber.setText("");
 		
-		player.hp = 10;
-		ui.hpLabelNumber.setText("" + player.hp);
-		
-		player.currentWeapon = new Weapon_Knife();
-		ui.weaponLabelName.setText(player.currentWeapon.name);
-		
-		silverRing = 0;
+		ui.weaponLabelName.setText("");
 	}
-	
-	
 	
 	public void selectPosition(String nextPosition) {
 		
 		switch(nextPosition) {
-		case "townGate": townGate(); break;
-		case "talkGuard": talkGuard(); break;
-		case "attackGuard": attackGuard(); break;
-		case "crossRoad": crossRoad(); break;
-		case "north": north(); break;
-		case "east": east(); break;
-		case "west": west(); break;
-		case "fight": fight(); break;
-		case "playerAttack": playerAttack(); break;
-		case "monsterAttack": monsterAttack(); break;
-		case "win": win(); break;
-		case "lose": lose(); break;
-		case "ending": ending(); break;
-		case "toTitle": toTitle(); break;
-		}
-	}
-	
-	public void townGate() {
-		ui.mainTextArea.setText("You are at the gate of the town.\n A guard is standing in front of you. \n\n What do you do?");
-		ui.choice1.setText("Talk to the guard"); 
-		ui.choice2.setText("Attack the guard");
-		ui.choice3.setText("Leave");
-		ui.choice4.setText("");
-		
-		game.nextPosition1 = "talkGuard";
-		game.nextPosition2 = "attackGuard";
-		game.nextPosition3 = "crossRoad";
-		game.nextPosition4 = "";
-	}
-	
-	public void talkGuard() {
-		if(silverRing == 0) {
-			ui.mainTextArea.setText("Guard: Hello Strander. I have never seen your face here before. \n I'm sorry but i cannot let a stranger enter our town.");
-		} else {
-			ending();
-		}
-		
-		ui.choice1.setText(">"); 
-		ui.choice2.setText("");
-		ui.choice3.setText("");
-		ui.choice4.setText("");
-		
-		game.nextPosition1 = "townGate";
-		game.nextPosition2 = "";
-		game.nextPosition3 = "";
-		game.nextPosition4 = "";
-	}
-	
-	public void attackGuard() {
-		ui.mainTextArea.setText("Guard: Hey dont't be stupid! \n\n The guard hit you so hard you give up. \n(You recive 3 damage)");
-		player.hp -= 3;
-		ui.hpLabelNumber.setText("" + player.hp);
-		
-		ui.choice1.setText(">"); 
-		ui.choice2.setText("");
-		ui.choice3.setText("");
-		ui.choice4.setText("");
-		
-		if(player.hp > 0 ) {
-			game.nextPosition1 = "townGate";
-			game.nextPosition2 = "";
-			game.nextPosition3 = "";
-			game.nextPosition4 = "";
-		} else if(player.hp < 1) {
-			game.nextPosition1 = "lose";
-			game.nextPosition2 = "";
-			game.nextPosition3 = "";
-			game.nextPosition4 = "";
-		}
-		
-	}
-	
-	public void crossRoad() {
-		ui.mainTextArea.setText("You are at a crossroad. \n If you go south, you will go back to town.");
-		ui.choice1.setText("Go North"); 
-		ui.choice2.setText("Go East");
-		ui.choice3.setText("Go West");
-		ui.choice4.setText("Go South");
-		
-		game.nextPosition1 = "north";
-		game.nextPosition2 = "east";
-		game.nextPosition3 = "west";
-		game.nextPosition4 = "townGate";
-	}
-	
-	public void north() {
-		ui.mainTextArea.setText("You arrive at a river. \n You drink the water and rest at the riverside. \n\n (Your HP goes up by two)");
-		player.hp += 2;
-		ui.hpLabelNumber.setText("" + player.hp);
-		
-		ui.choice1.setText("Go South"); 
-		ui.choice2.setText("");
-		ui.choice3.setText("");
-		ui.choice4.setText("");
-		
-		game.nextPosition1 = "crossRoad";
-		game.nextPosition2 = "";
-		game.nextPosition3 = "";
-		game.nextPosition4 = "";
-	}
-	
-	public void east() {
-		ui.mainTextArea.setText("You walked into a forest and for a Long Sword. \n\n (You obtained a Long Sword)");
-		player.currentWeapon = new Weapon_LongSword();
-		ui.weaponLabelName.setText(player.currentWeapon.name);
-		
-		ui.choice1.setText("Go West"); 
-		ui.choice2.setText("");
-		ui.choice3.setText("");
-		ui.choice4.setText("");
-		
-		game.nextPosition1 = "crossRoad";
-		game.nextPosition2 = "";
-		game.nextPosition3 = "";
-		game.nextPosition4 = "";
-	}
-	
-	public void west() {
-		
-		int i = new java.util.Random().nextInt(100) + 1;
-		
-		if(i < 90) {
-			monster = new Monster_Goblin();
-		} else {
-			monster = new Monster_Gandalf();
-		}
-		
-		ui.mainTextArea.setText("You encounter " + monster.name + "!");
-		
-		ui.choice1.setText("Figth"); 
-		ui.choice2.setText("Run");
-		ui.choice3.setText("");
-		ui.choice4.setText("");
-		
-		game.nextPosition1 = "fight";
-		game.nextPosition2 = "crossRoad";
-		game.nextPosition3 = "";
-		game.nextPosition4 = "";
-	}
-	
-	public void fight() {
-				
-		ui.mainTextArea.setText(monster.name + ": " + monster.hp + "\n What do you do?");
-		
-		ui.choice1.setText("Attack"); 
-		ui.choice2.setText("Run");
-		ui.choice3.setText("");
-		ui.choice4.setText("");
-		
-		game.nextPosition1 = "playerAttack";
-		game.nextPosition2 = "crossRoad";
-		game.nextPosition3 = "";
-		game.nextPosition4 = "";
-	}
-	
-	public void playerAttack() {
-		int playerDamage =  new java.util.Random().nextInt(player.currentWeapon.damage);
-		
-		ui.mainTextArea.setText("You attacked " + monster.name + " and did " + playerDamage + " damage!");
-		
-		monster.hp -= playerDamage;
-		
-		ui.choice1.setText(">"); 
-		ui.choice2.setText("");
-		ui.choice3.setText("");
-		ui.choice4.setText("");
-		
-		if(monster.hp > 0) {
-			game.nextPosition1 = "monsterAttack";
-			game.nextPosition2 = "";
-			game.nextPosition3 = "";
-			game.nextPosition4 = "";
-		} else if (monster.hp < 1) {
-			game.nextPosition1 = "win";
-			game.nextPosition2 = "";
-			game.nextPosition3 = "";
-			game.nextPosition4 = "";
-		}
-	}
-	
-	public void monsterAttack() {
-		
-		int monsterDamage = new java.util.Random().nextInt(monster.attack);
-		
-		ui.mainTextArea.setText(monster.attackMessage + "\n You recived " + monsterDamage + " damage!");
-		
-		player.hp -= monsterDamage;
-		ui.hpLabelNumber.setText("" + player.hp);
-		
-		ui.choice1.setText(">"); 
-		ui.choice2.setText("");
-		ui.choice3.setText("");
-		ui.choice4.setText("");
-		
-		if(player.hp > 0 ) {
-			game.nextPosition1 = "fight";
-			game.nextPosition2 = "";
-			game.nextPosition3 = "";
-			game.nextPosition4 = "";
-		} else if(player.hp < 1) {
-			game.nextPosition1 = "lose";
-			game.nextPosition2 = "";
-			game.nextPosition3 = "";
-			game.nextPosition4 = "";
-		}
-	}
-	
-	public void win() {
-		
-		ui.mainTextArea.setText("You've defeated the " + monster.name + " !\n The monster dropped a ring! \n\n (You obtained a Silver Ring)");
-		
-		silverRing = 1;
-		
-		ui.choice1.setText("Go East"); 
-		ui.choice2.setText("");
-		ui.choice3.setText("");
-		ui.choice4.setText("");
-		
-		game.nextPosition1 = "crossRoad";
-		game.nextPosition2 = "";
-		game.nextPosition3 = "";
-		game.nextPosition4 = "";
-	}
-	
-	public void lose() {
-		
-		ui.mainTextArea.setText("You are defeated! \n\n <GAME OVER>");
+		case "charCreate": charCreate(); break;
+		case "warrior": warrior(); break;
+		case "thief": thief(); break;
+		case "lancer": lancer(); break;
+		case "w.i.p": wip(); break;
+		case "storyStart": storyStart(); break;
+		case "gameStart": gameStart(); break;
 
+		}
+	}
+	
+	public void charCreate() {
+		ui.mainTextArea.setText("What class would you like to be?");
+		ui.choice1.setText("Warrior"); 
+		ui.choice2.setText("Thief");
+		ui.choice3.setText("Lancer");
+		ui.choice4.setText("W.I.P");
 		
-		ui.choice1.setText("Go back to title screen"); 
+		game.nextPosition1 = "warrior";
+		game.nextPosition2 = "thief";
+		game.nextPosition3 = "lancer";
+		game.nextPosition4 = "w.i.p";
+	}
+	
+	public void warrior() {
+		hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
+		ui.mainTextArea.setText("You are the great Hero " + hero.getName() + "! \nA " + hero.getClassType().getClassName()
+				+ " of legend! \nYour health is " + hero.getClassType().getHp()
+				+ " and with your current weapon you will be doing "
+				+ (hero.getClassType().getAtkPwr() + hero.getClassType().getWpn().getDmg()) + " damage per hit!");
+		
+		player.hp = hero.getClassType().getHp();
+		weapon = hero.getClassType().getWpn();
+		
+		ui.choice1.setText("Ok"); 
+		ui.choice2.setText("No");
+		ui.choice3.setText("");
+		ui.choice4.setText("");
+		
+		game.nextPosition1 = "storyStart";
+		game.nextPosition2 = "charCreate";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+	}
+	
+	public void thief() {
+		hero = new Hero("Niklas", grnRoom.getClass("Thief"));
+		ui.mainTextArea.setText("You are the great Hero " + hero.getName() + "! \nA " + hero.getClassType().getClassName()
+				+ " of legend! \nYour health is " + hero.getClassType().getHp()
+				+ " and with your current weapon you will be doing "
+				+ (hero.getClassType().getAtkPwr() + hero.getClassType().getWpn().getDmg()) + " damage per hit!");
+		
+		player.hp = hero.getClassType().getHp();
+		weapon = hero.getClassType().getWpn();
+		
+		ui.choice1.setText("Ok"); 
+		ui.choice2.setText("No");
+		ui.choice3.setText("");
+		ui.choice4.setText("");
+		
+		game.nextPosition1 = "storyStart";
+		game.nextPosition2 = "charCreate";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+	}
+	
+	public void lancer() {
+		hero = new Hero("Oscar", grnRoom.getClass("Lancer"));
+		ui.mainTextArea.setText("You are the great Hero " + hero.getName() + "! \nA " + hero.getClassType().getClassName()
+				+ " of legend! \nYour health is " + hero.getClassType().getHp()
+				+ " and with your current weapon you will be doing "
+				+ (hero.getClassType().getAtkPwr() + hero.getClassType().getWpn().getDmg()) + " damage per hit!");
+		
+		player.hp = hero.getClassType().getHp();
+		weapon = hero.getClassType().getWpn();
+		
+		ui.choice1.setText("Ok"); 
+		ui.choice2.setText("No");
+		ui.choice3.setText("");
+		ui.choice4.setText("");
+		
+		game.nextPosition1 = "storyStart";
+		game.nextPosition2 = "charCreate";
+		game.nextPosition3 = "";
+		game.nextPosition4 = "";
+	}
+	
+	public void wip() {
+		
+		ui.mainTextArea.setText("Wokring on it, go back!");
+		
+		ui.choice1.setText("Ok, sorry"); 
 		ui.choice2.setText("");
 		ui.choice3.setText("");
 		ui.choice4.setText("");
 		
-		game.nextPosition1 = "toTitle";
+		game.nextPosition1 = "charCreate";
 		game.nextPosition2 = "";
 		game.nextPosition3 = "";
 		game.nextPosition4 = "";
 	}
 	
-	public void ending() {
+	public void storyStart() {
+		ui.mainTextArea.setText("Your quest begins outside of town. \nThere is something going on. Investigate!");
 		
-		ui.mainTextArea.setText("Guard: Oh you killed the goblin? \n Thank you so much. You are a true hero! \n Welcome to our town! \n\n <THE END>");
-		
+		ui.nameLabelName.setText(hero.getName());
+		ui.hpLabelNumber.setText("" + hero.getClassType().getHp());
+		ui.weaponLabelName.setText(hero.getClassType().getWpn().getWpnName());
+		 
 		ui.choice1.setVisible(false);
-		ui.choice2.setVisible(false);
 		ui.choice3.setVisible(false);
 		ui.choice4.setVisible(false);
+		
+		ui.choice2.setText("Lets go!");
+		game.nextPosition2 = "gameStart";
+
 	}
 	
-	public void toTitle() {
-		defaultSetup();
-		vManager.showTitleScreen();
+	public void gameStart() {
+		//new Game();
 	}
 	
 }

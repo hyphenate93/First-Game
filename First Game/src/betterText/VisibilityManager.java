@@ -22,7 +22,7 @@ public class VisibilityManager {
 		
 	}
 	
-	public void titleToTown() {
+	public void characterCreation() {
 		
 		// hide the title screen
 		ui.titleNamePanel.setVisible(false);

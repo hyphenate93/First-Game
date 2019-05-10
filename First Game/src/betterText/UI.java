@@ -10,18 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import betterText.Game.ChoiceHandler;
+import betterText.GameTest.ChoiceHandler;
 
 
 public class UI {
 
 	public JFrame window;
-	public JPanel titleNamePanel;
-	public JPanel startButtonPanel;
-	public JPanel mainTextPanel;
-	public JPanel choiceButtonPanel;
-	public JPanel playerPanel;
-	public JLabel titleNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName;
+	public JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
+	public JLabel titleNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName, nameLabel, nameLabelName;
 	public JButton startButton, choice1, choice2, choice3, choice4;
 	public JTextArea mainTextArea;
 
@@ -46,12 +42,12 @@ public class UI {
 		// add the panel where the label with text will end up, give it its location and
 		// size as well as background color
 		titleNamePanel = new JPanel();
-		titleNamePanel.setBounds(100, 100, 600, 500);
+		titleNamePanel.setBounds(50, 50, 530, 100);
 		titleNamePanel.setBackground(Color.black);
 
 		// make the label and add text in it, make the text white, set font size and add
 		// the label to the panel above
-		titleNameLabel = new JLabel("Adventure");
+		titleNameLabel = new JLabel("Character Creation");
 		titleNameLabel.setForeground(Color.white);
 		titleNameLabel.setFont(titleFont);
 		titleNamePanel.add(titleNameLabel);
@@ -59,7 +55,7 @@ public class UI {
 		// make a panel for the start button and give it its bounds, just as previously
 		// done with other panels
 		startButtonPanel = new JPanel();
-		startButtonPanel.setBounds(300, 400, 200, 100);
+		startButtonPanel.setBounds(220, 300, 200, 50);
 		startButtonPanel.setBackground(Color.black);
 
 		// create the start button, fix background, text color, font and add it to the
@@ -81,14 +77,14 @@ public class UI {
 		// GAME SCREEN
 		// make a panel for the text to appear in, same as other panels above
 		mainTextPanel = new JPanel();
-		mainTextPanel.setBounds(100, 100, 600, 250);
+		mainTextPanel.setBounds(10, 10, 450, 300);
 		mainTextPanel.setBackground(Color.black);
 		window.add(mainTextPanel);
 
 		// adjust everything related to the text. background color, text color,
 		// text-wrap when it reaches the end of the bounds and make it non-editable
 		mainTextArea = new JTextArea("This is the main text area");
-		mainTextArea.setBounds(100, 100, 600, 250);
+		mainTextArea.setBounds(10, 10, 440, 300);
 		mainTextArea.setBackground(Color.black);
 		mainTextArea.setForeground(Color.white);
 		mainTextArea.setFont(normalFont);
@@ -100,9 +96,9 @@ public class UI {
 		// button panel, same as other panels except that we fix the layout of how the
 		// buttons will appear with the grid layout
 		choiceButtonPanel = new JPanel();
-		choiceButtonPanel.setBounds(250, 350, 300, 150);
+		choiceButtonPanel.setBounds(15, 380, 600, 50);
 		choiceButtonPanel.setBackground(Color.black);
-		choiceButtonPanel.setLayout(new GridLayout(4, 1));
+		choiceButtonPanel.setLayout(new GridLayout(1, 4));
 		window.add(choiceButtonPanel);
 
 		// create four buttons that all work the same way
@@ -144,10 +140,22 @@ public class UI {
 
 		//player panel, same as above
 		playerPanel = new JPanel();
-		playerPanel.setBounds(100, 15, 600, 50);
+		playerPanel.setBounds(470, 15, 150, 150);
 		playerPanel.setBackground(Color.black);
-		playerPanel.setLayout(new GridLayout(1, 4));
+		playerPanel.setLayout(new GridLayout(6, 1));
 		window.add(playerPanel);
+		
+		// label for name, same as above
+		nameLabel = new JLabel("Name: ");
+		nameLabel.setFont(normalFont);
+		nameLabel.setForeground(Color.white);
+		playerPanel.add(nameLabel);
+		
+		// label where name will show
+		nameLabelName = new JLabel();
+		nameLabelName.setFont(normalFont);
+		nameLabelName.setForeground(Color.white);
+		playerPanel.add(nameLabelName);
 		
 		// make a label for the HP, same adjustments as above
 		hpLabel = new JLabel("HP: ");

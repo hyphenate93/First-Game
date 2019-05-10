@@ -1,3 +1,5 @@
+//Unused in this version.
+
 package betterText;
 
 public class Weapon_Knife extends SuperWeapon{
