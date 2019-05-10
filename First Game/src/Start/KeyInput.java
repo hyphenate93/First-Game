@@ -20,56 +20,6 @@ public class KeyInput extends KeyAdapter {
 			
 			if(tempObject.getId() == ID.Player) {
 				// keys for player 1
-				if(key == KeyEvent.VK_W) tempObject.setVelY(-5);
-				if(key == KeyEvent.VK_S) tempObject.setVelY(+5);
-				if(key == KeyEvent.VK_A) tempObject.setVelX(-5);
-				if(key == KeyEvent.VK_D) tempObject.setVelX(+5);
-			}
-
-			
-		}
-		if (key == KeyEvent.VK_ESCAPE) System.exit(1);
-	}
-	public void keyReleased (KeyEvent e) {
-		int key = e.getExtendedKeyCode();
-		for (int i = 0 ; i < handler.object.size(); i++){
-			GameObject tempObject = handler.object.get(i);
-			
-			if(tempObject.getId() == ID.Player) {
-				// keys for player 1
-				if(key == KeyEvent.VK_W) tempObject.setVelY(0);
-				if(key == KeyEvent.VK_S) tempObject.setVelY(0);
-				if(key == KeyEvent.VK_A) tempObject.setVelX(0);
-				if(key == KeyEvent.VK_D) tempObject.setVelX(0);
-			}
-			
-		}
-	}
-		
-}
-=======
-package Start;
-
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
-public class KeyInput extends KeyAdapter {
-	
-	private Handler handler;
-	
-	public KeyInput(Handler handler) {
-		this.handler = handler;
-	}
-
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		
-		
-		for (int i = 0 ; i < handler.object.size(); i++){
-			GameObject tempObject = handler.object.get(i);
-			
-			if(tempObject.getId() == ID.Player) {
-				// keys for player 1
 				if(key == KeyEvent.VK_W && key == KeyEvent.VK_D) { tempObject.setVelY(-5); tempObject.setVelX(-5);}
 				if(key == KeyEvent.VK_W && key == KeyEvent.VK_A) { tempObject.setVelY(-5); tempObject.setVelX(+5);}
 				if(key == KeyEvent.VK_S && key == KeyEvent.VK_A) { tempObject.setVelY(+5); tempObject.setVelX(+5);}
@@ -79,8 +29,7 @@ public class KeyInput extends KeyAdapter {
 				if(key == KeyEvent.VK_A) tempObject.setVelX(-5);
 				if(key == KeyEvent.VK_D) tempObject.setVelX(+5);
 			}
-
-			
+	
 		}
 		if (key == KeyEvent.VK_ESCAPE) System.exit(1);
 	}
