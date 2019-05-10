@@ -10,10 +10,11 @@ public abstract class GameObject {
 		protected int velX, velY;
 		protected static int health;
 		
-		public GameObject(int x, int y, ID id) {
+		public GameObject(int x, int y, int z, ID id) {
 			this.x = x;
 			this.y = y;
 			this.id = id;
+			this.health = z;
 		}
 		
 		public abstract void tick();

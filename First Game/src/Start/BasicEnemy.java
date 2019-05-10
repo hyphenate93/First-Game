@@ -8,7 +8,7 @@ import java.awt.Rectangle;
 public class BasicEnemy extends GameObject {
 
 	public BasicEnemy(int x, int y, int health, ID id) {
-		super(x, y, id);
+		super(x, y, health, id);
 		velX = 0;
 		velY = 0;
 		this.health = health;
@@ -34,10 +34,18 @@ public class BasicEnemy extends GameObject {
 	}
 
 	public void render(Graphics g) {
-		
+		if(BasicEnemy.getHealth() > 0) {
 		g.setColor(Color.red);
 		g.fillRect(x, y, 16, 16);
+		}
+		else {
+			g.setColor(Color.black);
+			g.fillRect(0, 0, 0, 0 );
+			
+		}
+		
 		
 	}
+	
 
 }

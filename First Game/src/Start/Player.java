@@ -5,15 +5,16 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
-import textPart.RPGScreen;
+//import textPart.RPGScreen;
 
 public class Player extends GameObject {
 	Random r = new Random();
 	Handler handler;
 	
-	public Player(int x, int y, ID id, Handler handler) {
-		super(x, y, id);
+	public Player(int x, int y,int z, ID id, Handler handler) {
+		super(x, y, z,id);
 		this.handler = handler;
+		this.health = z;
 	
 	}
 	public Rectangle getBounds() {
@@ -34,14 +35,16 @@ public class Player extends GameObject {
 			if (tempObject.getId() == ID.BasicEnemy) {
 				if(getBounds().intersects(tempObject.getBounds())) {
 					
-					new RPGScreen();
+				//	new RPGScreen();
 					
 					tempObject.setVelX(0);
 					tempObject.setVelY(0);
-					tempObject.setX(0);
-					tempObject.setY(0);
+					tempObject.setX(-6000);
+					tempObject.setY(-6000);
 					
-					//HUD.HEALTH --;
+					HUD.HEALTH --;
+					BasicEnemy.setHealth(0); 
+					
 				}
 				
 			}
