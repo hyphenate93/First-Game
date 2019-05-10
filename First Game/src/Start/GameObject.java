@@ -8,6 +8,7 @@ public abstract class GameObject {
 		protected int x, y;
 		protected ID id;
 		protected int velX, velY;
+		protected static int health;
 		
 		public GameObject(int x, int y, ID id) {
 			this.x = x;
@@ -16,6 +17,14 @@ public abstract class GameObject {
 		}
 		
 		public abstract void tick();
+		public static int getHealth() {
+			return health;
+		}
+
+		public static void setHealth(int health) {
+			GameObject.health = health;
+		}
+
 		public abstract void render(Graphics g);
 		
 		public abstract Rectangle getBounds(); 

@@ -7,18 +7,21 @@ import java.awt.Rectangle;
 
 public class BasicEnemy extends GameObject {
 
-	public BasicEnemy(int x, int y, ID id) {
+	public BasicEnemy(int x, int y, int health, ID id) {
 		super(x, y, id);
 		velX = 0;
 		velY = 0;
+		this.health = health;
 	}
 	
 	public Rectangle getBounds() {
 		return new Rectangle(x,y,16,16);
 	}
+	
 
 
 	public void tick() {
+		
 		x += velX;
 		y += velY;
 
@@ -34,7 +37,7 @@ public class BasicEnemy extends GameObject {
 		
 		g.setColor(Color.red);
 		g.fillRect(x, y, 16, 16);
-
+		
 	}
 
 }
