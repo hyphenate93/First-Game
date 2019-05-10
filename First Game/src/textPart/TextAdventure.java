@@ -1,4 +1,4 @@
-package Start;
+package textPart;
 
 import java.awt.Color;
 import java.awt.Container;

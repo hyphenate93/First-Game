@@ -1,4 +1,4 @@
-package Start;
+package textPart;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -14,8 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import Start.TextAdventure.ChoiceHandler;
-import Start.TextAdventure.TitleScreenHandler;
+import textPart.TextAdventure.ChoiceHandler;
+import textPart.TextAdventure.TitleScreenHandler;
 
 public class RPGScreen {
 
@@ -41,6 +41,8 @@ public class RPGScreen {
 		window.setSize(800, 600);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setBackground(Color.black);
+		window.setResizable(false);
+		window.setLocationRelativeTo(null);
 		window.setLayout(null);
 		con = window.getContentPane();
 
@@ -73,7 +75,7 @@ public class RPGScreen {
 
 	}
 
-	/*public void createGameScreen() {
+	public void createGameScreen() {
 
 		titleNamePanel.setVisible(false);
 		startButtonPanel.setVisible(false);
@@ -162,13 +164,13 @@ public class RPGScreen {
 
 		
 
-	}*/
+	}
 	
 	public class TitleScreenHandler implements ActionListener {
 
 		public void actionPerformed(ActionEvent event) {
 
-			//createGameScreen();
+			createGameScreen();
 		}
 	}
 	
