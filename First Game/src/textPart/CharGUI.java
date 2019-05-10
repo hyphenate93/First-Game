@@ -27,7 +27,8 @@ public class CharGUI {
 	JButton startButton, choice1, choice2, choice3, choice4;
 	JTextArea mainTextArea;
 
-	int playerHP, monsterHP, silverRing;
+	int playerHP, monsterHP;
+
 	String position;
 	Weapon weapon;
 
@@ -240,12 +241,11 @@ public class CharGUI {
 		choice3.setText("");
 		choice4.setText("");
 	}
-	
+
 	public void storyStart() {
 		position = "storyStart";
 
-		mainTextArea.setText(
-				"Your quest begins outside of town. \nThere is something going on. Investigate!");
+		mainTextArea.setText("Your quest begins outside of town. \nThere is something going on. Investigate!");
 
 		choice1.setText("");
 		choice2.setText("Lets go!");
@@ -253,9 +253,56 @@ public class CharGUI {
 		choice4.setText("");
 
 		choice1.setVisible(false);
-		//choice2.setVisible(false);
+		// choice2.setVisible(false);
 		choice3.setVisible(false);
 		choice4.setVisible(false);
+	}
+
+	public void playerSetup() {
+
+		playerHP = hero.getClassType().getHp();
+		weapon = hero.getClassType().getWpn();
+		hpLabel.setText("Health: " + playerHP);
+		weaponLabelName.setText(hero.getClassType().getWpn().wpnName);
+
+		/*
+		 * if(monster is rat) { rat(); } else if(monster is ratMan) { ratMan(); } else
+		 * if(monster is ratMonster) { ratMonster(); }
+		 */
+
+	}
+
+	public void rat() {
+		position = "rat";
+
+		mainTextArea.setText("You see an unusally large rat. \nIt charges at you, trying to bite at your leggs!");
+
+		choice1.setText("Attack");
+		choice2.setText("Block");
+		choice3.setText("Run");
+		choice4.setText("Inventory");
+	}
+
+	public void ratMan() {
+		position = "ratMan";
+
+		mainTextArea.setText("You see a rat-man. \nIt charges at you, trying to bite at your chest!");
+
+		choice1.setText("Attack");
+		choice2.setText("Block");
+		choice3.setText("Run");
+		choice4.setText("Inventory");
+	}
+
+	public void ratMonster() {
+		position = "ratMonster";
+
+		mainTextArea.setText("You see a rat monster. \nIt charges at you, trying to bite at your head!");
+
+		choice1.setText("Attack");
+		choice2.setText("Block");
+		choice3.setText("Run");
+		choice4.setText("Inventory");
 	}
 
 	public class TitleScreenHandler implements ActionListener {
@@ -264,6 +311,14 @@ public class CharGUI {
 
 			createGameScreen();
 		}
+	}
+
+	/*
+	 * need a way to save the chosen hero to be used in other areas. shouldn't this
+	 * work?
+	 */
+	public Hero getHero() {
+		return hero;
 	}
 
 	public class ChoiceHandler implements ActionListener {
@@ -330,7 +385,6 @@ public class CharGUI {
 			}
 		}
 	}
-	
 
 	public static void main(String[] args) {
 		new CharGUI();

@@ -5,11 +5,14 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
+import textPart.CharGUI;
 import textPart.RPGScreen;
 
 public class Player extends GameObject {
 	Random r = new Random();
 	Handler handler;
+	
+	CharGUI rpg = new CharGUI();
 	
 	public Player(int x, int y,int z, ID id, Handler handler) {
 		super(x, y, z,id);
@@ -35,7 +38,7 @@ public class Player extends GameObject {
 			if (tempObject.getId() == ID.BasicEnemy) {
 				if(getBounds().intersects(tempObject.getBounds())) {
 					
-					new RPGScreen();
+					rpg.playerSetup();
 					
 					tempObject.setVelX(0);
 					tempObject.setVelY(0);

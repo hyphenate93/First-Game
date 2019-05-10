@@ -36,6 +36,8 @@ public class RPGScreen {
 	ClassGreenRoom grnRoom = new ClassGreenRoom();
 	Hero hero = null;
 	
+	CharGUI test = new CharGUI();
+	
 
 	public RPGScreen() {
 
@@ -132,7 +134,9 @@ public class RPGScreen {
 	
 	public void playerSetup() {
 		
-		hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
+		//hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
+		
+		hero = test.getHero();
 		
 		playerHP = hero.getClassType().getHp();
 		weapon = hero.getClassType().getWpn().getWpnName();
@@ -165,7 +169,7 @@ public class RPGScreen {
 	public void ratMan() {
 		position = "ratMan";
 		
-		mainTextArea.setText("You see an unusally large rat. \nIt charges at you, trying to bite at your leggs!");
+		mainTextArea.setText("You see a rat-man. \nIt charges at you, trying to bite at your chest!");
 		
 		choice1.setText("Attack");
 		choice2.setText("Block");
@@ -176,7 +180,7 @@ public class RPGScreen {
 	public void ratMonster() {
 		position = "ratMonster";
 		
-		mainTextArea.setText("You see an unusally large rat. \nIt charges at you, trying to bite at your leggs!");
+		mainTextArea.setText("You see a rat monster. \nIt charges at you, trying to bite at your head!");
 		
 		choice1.setText("Attack");
 		choice2.setText("Block");
