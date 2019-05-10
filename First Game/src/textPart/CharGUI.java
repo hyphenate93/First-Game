@@ -323,12 +323,14 @@ public class CharGUI {
 				switch (yourChoice) {
 				case "c2":
 					new Game();
+					window.dispose();
 					break;
 				}
 				break;
 			}
 		}
 	}
+	
 
 	public static void main(String[] args) {
 		new CharGUI();

@@ -32,9 +32,10 @@ public class RPGScreen {
 	int playerHP, monsterHP, silverRing;
 	String weapon, position;
 
-	TitleScreenHandler tsHandler = new TitleScreenHandler();
 	ChoiceHandler choiceHandler = new ChoiceHandler();
-
+	ClassGreenRoom grnRoom = new ClassGreenRoom();
+	Hero hero = null;
+	
 
 	public RPGScreen() {
 
@@ -46,40 +47,6 @@ public class RPGScreen {
 		window.setLocationRelativeTo(null);
 		window.setLayout(null);
 		con = window.getContentPane();
-
-		titleNamePanel = new JPanel();
-		titleNamePanel.setBounds(50, 50, 530, 100);
-		titleNamePanel.setBackground(Color.black);
-
-		titleNameLabel = new JLabel("Test Screen");
-		titleNameLabel.setForeground(Color.white);
-		titleNameLabel.setFont(titleFont);
-
-		startButtonPanel = new JPanel();
-		startButtonPanel.setBounds(220, 300, 200, 50);
-		startButtonPanel.setBackground(Color.black);
-
-		startButton = new JButton("START");
-		startButton.setBackground(Color.black);
-		startButton.setForeground(Color.white);
-		startButton.setFont(normalFont);
-		startButton.addActionListener(tsHandler);
-		startButton.setFocusPainted(false); // remove line around button
-
-		titleNamePanel.add(titleNameLabel);
-		startButtonPanel.add(startButton);
-
-		con.add(titleNamePanel);
-		con.add(startButtonPanel);
-
-		window.setVisible(true);
-
-	}
-
-	public void createGameScreen() {
-
-		titleNamePanel.setVisible(false);
-		startButtonPanel.setVisible(false);
 
 		mainTextPanel = new JPanel();
 		mainTextPanel.setBounds(10, 10, 450, 300);
@@ -143,8 +110,7 @@ public class RPGScreen {
 		playerPanel.setLayout(new GridLayout(3, 1));
 		con.add(playerPanel);
 
-		int hp = 15;
-		hpLabel = new JLabel("HP: " + hp);
+		hpLabel = new JLabel("HP: " + playerHP);
 		hpLabel.setFont(normalFont);
 		hpLabel.setForeground(Color.white);
 		playerPanel.add(hpLabel);
@@ -159,17 +125,65 @@ public class RPGScreen {
 		weaponLabelName.setForeground(Color.white);
 		playerPanel.add(weaponLabelName);
 
-		
+		window.setVisible(true);
 
+		playerSetup();
 	}
 	
-	public class TitleScreenHandler implements ActionListener {
-
-		public void actionPerformed(ActionEvent event) {
-
-			new Game();
+	public void playerSetup() {
+		
+		hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
+		
+		playerHP = hero.getClassType().getHp();
+		weapon = hero.getClassType().getWpn().getWpnName();
+		hpLabel.setText("Health: " + playerHP);
+		weaponLabelName.setText(weapon);
+		
+		/*
+		if(monster is rat) {
+			rat();
+		} else if(monster is ratMan) {
+			ratMan();
+		} else if(monster is ratMonster) {
+			ratMonster();
 		}
+		*/
+		
 	}
+	
+	public void rat() {
+		position = "rat";
+		
+		mainTextArea.setText("You see an unusally large rat. \nIt charges at you, trying to bite at your leggs!");
+		
+		choice1.setText("Attack");
+		choice2.setText("Block");
+		choice3.setText("Run");
+		choice4.setText("Inventory");
+	}
+	
+	public void ratMan() {
+		position = "ratMan";
+		
+		mainTextArea.setText("You see an unusally large rat. \nIt charges at you, trying to bite at your leggs!");
+		
+		choice1.setText("Attack");
+		choice2.setText("Block");
+		choice3.setText("Run");
+		choice4.setText("Inventory");
+	}
+	
+	public void ratMonster() {
+		position = "ratMonster";
+		
+		mainTextArea.setText("You see an unusally large rat. \nIt charges at you, trying to bite at your leggs!");
+		
+		choice1.setText("Attack");
+		choice2.setText("Block");
+		choice3.setText("Run");
+		choice4.setText("Inventory");
+	}
+	
 	
 	public class ChoiceHandler implements ActionListener {
 
