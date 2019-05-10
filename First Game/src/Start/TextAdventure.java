@@ -507,7 +507,7 @@ public class TextAdventure {
 	}
 
 	public static void main(String[] args) {
-		new GameGUITest();
+		new TextAdventure();
 	}
 
 }

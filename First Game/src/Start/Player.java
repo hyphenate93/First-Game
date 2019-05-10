@@ -31,14 +31,20 @@ public class Player extends GameObject {
 			GameObject tempObject = handler.object.get(i);
 			if (tempObject.getId() == ID.BasicEnemy) {
 				if(getBounds().intersects(tempObject.getBounds())) {
-					HUD.HEALTH --;
+					
+					new RPGScreen();
+					
+					tempObject.setVelX(0);
+					tempObject.setVelY(0);
+					tempObject.setX(0);
+					tempObject.setY(0);
+					
+					//HUD.HEALTH --;
 				}
 				
 			}
 		}
 	}
-	
-
 	
 	public void render(Graphics g) {
 		if (id == ID.Player) g.setColor(Color.white);
