@@ -10,7 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import guiPractice.Game.ChoiceHandler;
+import betterTextAdventure.Game.ChoiceHandler;
+
 
 public class UI {
 
