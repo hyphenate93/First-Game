@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import Start.Game;
+
 public class CharGUI {
 
 	JFrame window;
@@ -165,14 +167,14 @@ public class CharGUI {
 		position = "preChoice";
 
 		mainTextArea.setText("\n\n\nWhat class would you like to be?");
-		
+
 		hpLabel.setText("HP:");
 		weaponLabelName.setText("");
 
 		choice1.setText("Warrior");
 		choice2.setText("Thief");
 		choice3.setText("Lancer");
-		choice4.setText("WIP");
+		choice4.setText("W.I.P");
 
 	}
 
@@ -181,7 +183,9 @@ public class CharGUI {
 
 		hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
 		mainTextArea.setText("You are the great Hero " + hero.getName() + "! \nA " + hero.getClassType().getClassName()
-				+ " of legend!");
+				+ " of legend! \nYour health is " + hero.getClassType().getHp()
+				+ " and with your current weapon you will be doing "
+				+ (hero.getClassType().getAtkPwr() + hero.getClassType().getWpn().getDmg()) + " damage per hit!");
 
 		playerHP = hero.getClassType().getHp();
 		weapon = hero.getClassType().getWpn();
@@ -193,6 +197,65 @@ public class CharGUI {
 		choice2.setText("Nah dude");
 		choice3.setText("");
 		choice4.setText("");
+	}
+
+	public void thief() {
+		position = "thief";
+
+		hero = new Hero("Niklas", grnRoom.getClass("Thief"));
+		mainTextArea.setText("You are the great Hero " + hero.getName() + "! \nA " + hero.getClassType().getClassName()
+				+ " of legend! \nYour health is " + hero.getClassType().getHp()
+				+ " and with your current weapon you will be doing "
+				+ (hero.getClassType().getAtkPwr() + hero.getClassType().getWpn().getDmg()) + " damage per hit!");
+
+		playerHP = hero.getClassType().getHp();
+		weapon = hero.getClassType().getWpn();
+
+		hpLabel.setText("HP:" + playerHP);
+		weaponLabelName.setText(hero.getClassType().getWpn().wpnName);
+
+		choice1.setText("Ok");
+		choice2.setText("Nah dude");
+		choice3.setText("");
+		choice4.setText("");
+	}
+
+	public void lancer() {
+		position = "lancer";
+
+		hero = new Hero("Oscar", grnRoom.getClass("Lancer"));
+		mainTextArea.setText("You are the great Hero " + hero.getName() + "! \nA " + hero.getClassType().getClassName()
+				+ " of legend! \nYour health is " + hero.getClassType().getHp()
+				+ " and with your current weapon you will be doing "
+				+ (hero.getClassType().getAtkPwr() + hero.getClassType().getWpn().getDmg()) + " damage per hit!");
+
+		playerHP = hero.getClassType().getHp();
+		weapon = hero.getClassType().getWpn();
+
+		hpLabel.setText("HP:" + playerHP);
+		weaponLabelName.setText(hero.getClassType().getWpn().wpnName);
+
+		choice1.setText("Ok");
+		choice2.setText("Nah dude");
+		choice3.setText("");
+		choice4.setText("");
+	}
+	
+	public void storyStart() {
+		position = "storyStart";
+
+		mainTextArea.setText(
+				"Your quest begins outside of town. \nThere is something going on. Investigate!");
+
+		choice1.setText("");
+		choice2.setText("Lets go!");
+		choice3.setText("");
+		choice4.setText("");
+
+		choice1.setVisible(false);
+		//choice2.setVisible(false);
+		choice3.setVisible(false);
+		choice4.setVisible(false);
 	}
 
 	public class TitleScreenHandler implements ActionListener {
@@ -216,10 +279,10 @@ public class CharGUI {
 					warrior();
 					break;
 				case "c2":
-					
+					thief();
 					break;
 				case "c3":
-
+					lancer();
 					break;
 				case "c4":
 
@@ -227,13 +290,42 @@ public class CharGUI {
 				}
 				break;
 			case "warrior":
-				switch(yourChoice) {
+				switch (yourChoice) {
 				case "c1":
+					storyStart();
 					break;
 				case "c2":
 					preChoice();
 					break;
 				}
+				break;
+			case "thief":
+				switch (yourChoice) {
+				case "c1":
+					storyStart();
+					break;
+				case "c2":
+					preChoice();
+					break;
+				}
+				break;
+			case "lancer":
+				switch (yourChoice) {
+				case "c1":
+					storyStart();
+					break;
+				case "c2":
+					preChoice();
+					break;
+				}
+				break;
+			case "storyStart":
+				switch (yourChoice) {
+				case "c2":
+					new Game();
+					break;
+				}
+				break;
 			}
 		}
 	}
