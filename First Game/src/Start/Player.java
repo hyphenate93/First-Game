@@ -13,6 +13,7 @@ public class Player extends GameObject {
 	Random r = new Random();
 	Handler handler;
 	CharGUI rpg = new CharGUI();
+	private Hero hero;
 	
 	
 	
@@ -20,7 +21,7 @@ public class Player extends GameObject {
 		super(x, y, z,id);
 		this.handler = handler;
 		this.health = z;
-		hero = null;
+		this.hero = hero;
 	
 	}
 	public Rectangle getBounds() {

@@ -6,31 +6,37 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
+import java.util.Scanner;
 
 import textPart.CharGUI;
 import textPart.Hero;
 
 public class Game extends Canvas implements Runnable {
-		// initiate game variables
+	
+	// initiate game variables
 	private static final long serialVersionUID = 1550691097823471818L;
 	public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
-	private Hero hero = null;
+	
+	
 	private Thread thread;
 	private boolean running = false;
 	private Handler handler;
 	private Random r;
 	private HUD hud;
-	CharGUI test = new CharGUI();
+	private Hero hero;
 	
 	
 	public Game() {
-
+		CharGUI test = new CharGUI();	
+		while(test.getHero() == null) {hero = test.getHero();}
+		System.out.println(hero.getName());
+		 
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
 		new Window(WIDTH, HEIGHT, "Let's Build a Game", this);
 		hud = new HUD();
 
-			handler.addObject(new Player(WIDTH / 2 - 64, HEIGHT / 2 - 64, hero.getClassType().getHp(), ID.Player, test.getHero(), handler));
+			handler.addObject(new Player(WIDTH / 2 - 64, HEIGHT / 2 - 64, hero.getClassType().getHp(), ID.Player, hero, handler));
 			handler.addObject(new BasicEnemy((WIDTH / 2 - 32), (HEIGHT / 2 - 32),100, ID.BasicEnemy));
 
 			r = new Random();
