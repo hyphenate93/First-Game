@@ -23,8 +23,8 @@ public class RPGScreen {
 	Container con;
 	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
 	JLabel titleNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName;
-	Font titleFont = new Font("Times New Roman", Font.PLAIN, 85);
-	Font normalFont = new Font("Times New Roman", Font.PLAIN, 28);
+	Font titleFont = new Font("Times New Roman", Font.PLAIN, 55);
+	Font normalFont = new Font("Times New Roman", Font.PLAIN, 22);
 	JButton startButton, choice1, choice2, choice3, choice4;
 	JTextArea mainTextArea;
 
@@ -38,7 +38,7 @@ public class RPGScreen {
 	public RPGScreen() {
 
 		window = new JFrame();
-		window.setSize(800, 600);
+		window.setSize(640, 480);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setBackground(Color.black);
 		window.setResizable(false);
@@ -47,7 +47,7 @@ public class RPGScreen {
 		con = window.getContentPane();
 
 		titleNamePanel = new JPanel();
-		titleNamePanel.setBounds(100, 100, 600, 150);
+		titleNamePanel.setBounds(50, 50, 530, 100);
 		titleNamePanel.setBackground(Color.black);
 
 		titleNameLabel = new JLabel("Test Screen");
@@ -55,7 +55,7 @@ public class RPGScreen {
 		titleNameLabel.setFont(titleFont);
 
 		startButtonPanel = new JPanel();
-		startButtonPanel.setBounds(300, 400, 200, 100);
+		startButtonPanel.setBounds(220, 300, 200, 50);
 		startButtonPanel.setBackground(Color.black);
 
 		startButton = new JButton("START");
@@ -95,12 +95,12 @@ public class RPGScreen {
 		mainTextPanel.add(mainTextArea);
 
 		choiceButtonPanel = new JPanel();
-		choiceButtonPanel.setBounds(250, 350, 300, 150);
+		choiceButtonPanel.setBounds(100, 500, 600, 50);
 		choiceButtonPanel.setBackground(Color.black);
-		choiceButtonPanel.setLayout(new GridLayout(4, 1));
+		choiceButtonPanel.setLayout(new GridLayout(1, 4));
 		con.add(choiceButtonPanel);
 
-		choice1 = new JButton("Choice One");
+		choice1 = new JButton("One");
 		choice1.setBackground(Color.black);
 		choice1.setForeground(Color.white);
 		choice1.setFont(normalFont);
@@ -109,7 +109,7 @@ public class RPGScreen {
 		choice1.setActionCommand("c1");
 		choiceButtonPanel.add(choice1);
 
-		choice2 = new JButton("Choice Two");
+		choice2 = new JButton("Two");
 		choice2.setBackground(Color.black);
 		choice2.setForeground(Color.white);
 		choice2.setFont(normalFont);
@@ -118,7 +118,7 @@ public class RPGScreen {
 		choice2.setActionCommand("c2");
 		choiceButtonPanel.add(choice2);
 
-		choice3 = new JButton("Choice Tree");
+		choice3 = new JButton("Tree");
 		choice3.setBackground(Color.black);
 		choice3.setForeground(Color.white);
 		choice3.setFont(normalFont);
@@ -127,7 +127,7 @@ public class RPGScreen {
 		choice3.setActionCommand("c3");
 		choiceButtonPanel.add(choice3);
 
-		choice4 = new JButton("Choice Four");
+		choice4 = new JButton("Four");
 		choice4.setBackground(Color.black);
 		choice4.setForeground(Color.white);
 		choice4.setFont(normalFont);
@@ -139,7 +139,7 @@ public class RPGScreen {
 		playerPanel = new JPanel();
 		playerPanel.setBounds(100, 15, 600, 50);
 		playerPanel.setBackground(Color.black);
-		playerPanel.setLayout(new GridLayout(1, 4));
+		playerPanel.setLayout(new GridLayout(2, 2));
 		con.add(playerPanel);
 
 		hpLabel = new JLabel("HP: ");
