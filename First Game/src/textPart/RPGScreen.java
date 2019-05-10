@@ -81,12 +81,12 @@ public class RPGScreen {
 		startButtonPanel.setVisible(false);
 
 		mainTextPanel = new JPanel();
-		mainTextPanel.setBounds(100, 100, 600, 250);
+		mainTextPanel.setBounds(10, 10, 450, 300);
 		mainTextPanel.setBackground(Color.black);
 		con.add(mainTextPanel);
 
 		mainTextArea = new JTextArea("This is the main text area. This game is going to be great im sure of it!!!");
-		mainTextArea.setBounds(100, 100, 600, 250);
+		mainTextArea.setBounds(10, 10, 440, 300);
 		mainTextArea.setBackground(Color.black);
 		mainTextArea.setForeground(Color.white);
 		mainTextArea.setFont(normalFont);
@@ -95,7 +95,7 @@ public class RPGScreen {
 		mainTextPanel.add(mainTextArea);
 
 		choiceButtonPanel = new JPanel();
-		choiceButtonPanel.setBounds(100, 500, 600, 50);
+		choiceButtonPanel.setBounds(15, 380, 600, 50);
 		choiceButtonPanel.setBackground(Color.black);
 		choiceButtonPanel.setLayout(new GridLayout(1, 4));
 		con.add(choiceButtonPanel);
@@ -137,20 +137,16 @@ public class RPGScreen {
 		choiceButtonPanel.add(choice4);
 
 		playerPanel = new JPanel();
-		playerPanel.setBounds(100, 15, 600, 50);
+		playerPanel.setBounds(470, 15, 150, 150);
 		playerPanel.setBackground(Color.black);
-		playerPanel.setLayout(new GridLayout(2, 2));
+		playerPanel.setLayout(new GridLayout(3, 1));
 		con.add(playerPanel);
 
-		hpLabel = new JLabel("HP: ");
+		int hp = 15;
+		hpLabel = new JLabel("HP: " + hp);
 		hpLabel.setFont(normalFont);
 		hpLabel.setForeground(Color.white);
 		playerPanel.add(hpLabel);
-
-		hpLabelNumber = new JLabel();
-		hpLabelNumber.setFont(normalFont);
-		hpLabelNumber.setForeground(Color.white);
-		playerPanel.add(hpLabelNumber);
 
 		weaponLabel = new JLabel("Weapon: ");
 		weaponLabel.setFont(normalFont);
