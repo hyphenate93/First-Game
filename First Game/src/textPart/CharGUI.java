@@ -14,10 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import Start.Game;
-import textPart.TextAdventure.ChoiceHandler;
-import textPart.TextAdventure.TitleScreenHandler;
-
 public class CharGUI {
 
 	JFrame window;
@@ -30,11 +26,14 @@ public class CharGUI {
 	JTextArea mainTextArea;
 
 	int playerHP, monsterHP, silverRing;
-	String weapon, position;
+	String position;
+	Weapon weapon;
 
 	TitleScreenHandler tsHandler = new TitleScreenHandler();
 	ChoiceHandler choiceHandler = new ChoiceHandler();
 
+	ClassGreenRoom grnRoom = new ClassGreenRoom();
+	Hero hero = null;
 
 	public CharGUI() {
 
@@ -143,8 +142,7 @@ public class CharGUI {
 		playerPanel.setLayout(new GridLayout(3, 1));
 		con.add(playerPanel);
 
-		int hp = 15;
-		hpLabel = new JLabel("HP: " + hp);
+		hpLabel = new JLabel("HP: " + playerHP);
 		hpLabel.setFont(normalFont);
 		hpLabel.setForeground(Color.white);
 		playerPanel.add(hpLabel);
@@ -159,28 +157,89 @@ public class CharGUI {
 		weaponLabelName.setForeground(Color.white);
 		playerPanel.add(weaponLabelName);
 
-		
+		preChoice();
 
 	}
-	
+
+	public void preChoice() {
+		position = "preChoice";
+
+		mainTextArea.setText("\n\n\nWhat class would you like to be?");
+		
+		hpLabel.setText("HP:");
+		weaponLabelName.setText("");
+
+		choice1.setText("Warrior");
+		choice2.setText("Thief");
+		choice3.setText("Lancer");
+		choice4.setText("WIP");
+
+	}
+
+	public void warrior() {
+		position = "warrior";
+
+		hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
+		mainTextArea.setText("You are the great Hero " + hero.getName() + "! \nA " + hero.getClassType().getClassName()
+				+ " of legend!");
+
+		playerHP = hero.getClassType().getHp();
+		weapon = hero.getClassType().getWpn();
+
+		hpLabel.setText("HP:" + playerHP);
+		weaponLabelName.setText(hero.getClassType().getWpn().wpnName);
+
+		choice1.setText("Ok");
+		choice2.setText("Nah dude");
+		choice3.setText("");
+		choice4.setText("");
+	}
+
 	public class TitleScreenHandler implements ActionListener {
 
 		public void actionPerformed(ActionEvent event) {
 
-			new Game();
+			createGameScreen();
 		}
 	}
-	
+
 	public class ChoiceHandler implements ActionListener {
 
 		public void actionPerformed(ActionEvent event) {
-			
+
+			String yourChoice = event.getActionCommand();
+
+			switch (position) {
+			case "preChoice":
+				switch (yourChoice) {
+				case "c1":
+					warrior();
+					break;
+				case "c2":
+					
+					break;
+				case "c3":
+
+					break;
+				case "c4":
+
+					break;
+				}
+				break;
+			case "warrior":
+				switch(yourChoice) {
+				case "c1":
+					break;
+				case "c2":
+					preChoice();
+					break;
+				}
+			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
-		new RPGScreen();
+		new CharGUI();
 	}
-	
-	
+
 }
