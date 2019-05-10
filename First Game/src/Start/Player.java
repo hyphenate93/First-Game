@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
-//import textPart.RPGScreen;
+import textPart.RPGScreen;
 
 public class Player extends GameObject {
 	Random r = new Random();
@@ -35,14 +35,14 @@ public class Player extends GameObject {
 			if (tempObject.getId() == ID.BasicEnemy) {
 				if(getBounds().intersects(tempObject.getBounds())) {
 					
-				//	new RPGScreen();
+					new RPGScreen();
 					
 					tempObject.setVelX(0);
 					tempObject.setVelY(0);
 					tempObject.setX(-6000);
 					tempObject.setY(-6000);
 					
-					HUD.HEALTH --;
+					//HUD.HEALTH --;
 					BasicEnemy.setHealth(0); 
 					
 				}
