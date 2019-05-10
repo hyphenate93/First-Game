@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
+import textPart.CharGUI;
 import textPart.Hero;
 
 public class Game extends Canvas implements Runnable {
@@ -19,7 +20,9 @@ public class Game extends Canvas implements Runnable {
 	private Handler handler;
 	private Random r;
 	private HUD hud;
-
+	CharGUI test = new CharGUI();
+	
+	
 	public Game() {
 
 		handler = new Handler();
@@ -27,7 +30,7 @@ public class Game extends Canvas implements Runnable {
 		new Window(WIDTH, HEIGHT, "Let's Build a Game", this);
 		hud = new HUD();
 
-			handler.addObject(new Player(WIDTH / 2 - 64, HEIGHT / 2 - 64, 100, ID.Player,hero, handler));
+			handler.addObject(new Player(WIDTH / 2 - 64, HEIGHT / 2 - 64, hero.getClassType().getHp(), ID.Player, test.getHero(), handler));
 			handler.addObject(new BasicEnemy((WIDTH / 2 - 32), (HEIGHT / 2 - 32),100, ID.BasicEnemy));
 
 			r = new Random();

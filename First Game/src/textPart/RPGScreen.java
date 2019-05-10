@@ -134,9 +134,8 @@ public class RPGScreen {
 	
 	public void playerSetup() {
 		
-		//hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
-		
-		hero = test.getHero();
+		hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
+	
 		
 		playerHP = hero.getClassType().getHp();
 		weapon = hero.getClassType().getWpn().getWpnName();
