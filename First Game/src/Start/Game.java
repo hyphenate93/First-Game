@@ -27,7 +27,9 @@ public class Game extends Canvas implements Runnable {
 	
 	
 	public Game() {
+		// prompts character creation screen
 		CharGUI test = new CharGUI();	
+		// sets hero from user selection 
 		while(test.getHero() == null) {hero = test.getHero();}
 		System.out.println(hero.getName());
 		 
@@ -35,7 +37,8 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 		new Window(WIDTH, HEIGHT, "Let's Build a Game", this);
 		hud = new HUD();
-
+			
+			// create the objects for the game IE heroes or enemies
 			handler.addObject(new Player(WIDTH / 2 - 64, HEIGHT / 2 - 64, hero.getClassType().getHp(), ID.Player, hero, handler));
 			handler.addObject(new BasicEnemy((WIDTH / 2 - 32), (HEIGHT / 2 - 32),100, ID.BasicEnemy));
 
