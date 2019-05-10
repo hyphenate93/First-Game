@@ -18,7 +18,7 @@ import Start.Game;
 import textPart.TextAdventure.ChoiceHandler;
 import textPart.TextAdventure.TitleScreenHandler;
 
-public class RPGScreen {
+public class CharGUI {
 
 	JFrame window;
 	Container con;
@@ -36,7 +36,7 @@ public class RPGScreen {
 	ChoiceHandler choiceHandler = new ChoiceHandler();
 
 
-	public RPGScreen() {
+	public CharGUI() {
 
 		window = new JFrame();
 		window.setSize(640, 480);
@@ -51,7 +51,7 @@ public class RPGScreen {
 		titleNamePanel.setBounds(50, 50, 530, 100);
 		titleNamePanel.setBackground(Color.black);
 
-		titleNameLabel = new JLabel("Test Screen");
+		titleNameLabel = new JLabel("Character Creation");
 		titleNameLabel.setForeground(Color.white);
 		titleNameLabel.setFont(titleFont);
 
