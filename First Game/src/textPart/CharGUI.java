@@ -37,9 +37,10 @@ public class CharGUI {
 
 	ClassGreenRoom grnRoom = new ClassGreenRoom();
 	Hero hero = null;
-
+	boolean skip = false;
+	
 	public CharGUI() {
-
+		
 		window = new JFrame();
 		window.setSize(640, 480);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,7 +76,8 @@ public class CharGUI {
 		con.add(startButtonPanel);
 
 		window.setVisible(true);
-
+		skip  = true;
+		
 	}
 
 	public void createGameScreen() {
