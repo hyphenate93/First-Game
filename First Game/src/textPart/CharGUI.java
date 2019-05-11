@@ -379,7 +379,7 @@ public class CharGUI {
 			case "storyStart":
 				switch (yourChoice) {
 				case "c2":
-					new Game();
+				//	new Game();
 					window.dispose();
 					break;
 				}

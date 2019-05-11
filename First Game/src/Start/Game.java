@@ -25,23 +25,27 @@ public class Game extends Canvas implements Runnable {
 	private HUD hud;
 	private Hero hero;
 	
+	// prompts character creation screen
+			CharGUI test = new CharGUI();	
 	
 	public Game() {
-		// prompts character creation screen
-		CharGUI test = new CharGUI();	
 		// sets hero from user selection 
-		while(test.getHero() == null) {hero = test.getHero();}
-		System.out.println(hero.getName());
+		while(test.getHero() == null) {
+			
+			hero = test.getHero();
+			
+			}
+		//System.out.println(hero.getName());
 		 
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
 		new Window(WIDTH, HEIGHT, "Let's Build a Game", this);
 		hud = new HUD();
-			
+		if(test.getHero() != null) {
 			// create the objects for the game IE heroes or enemies
 			handler.addObject(new Player(WIDTH / 2 - 64, HEIGHT / 2 - 64, hero.getClassType().getHp(), ID.Player, hero, handler));
 			handler.addObject(new BasicEnemy((WIDTH / 2 - 32), (HEIGHT / 2 - 32),100, ID.BasicEnemy));
-
+		}
 			r = new Random();
 	}
 
@@ -61,7 +65,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void run() {
-		this.requestFocus();
+		//this.requestFocus();
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;

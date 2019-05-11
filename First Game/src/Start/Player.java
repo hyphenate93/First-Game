@@ -12,7 +12,7 @@ import textPart.RPGScreen;
 public class Player extends GameObject {
 	Random r = new Random();
 	Handler handler;
-	CharGUI rpg = new CharGUI();
+//	CharGUI rpg = new CharGUI();
 	private Hero hero;
 	
 	
@@ -42,7 +42,7 @@ public class Player extends GameObject {
 			if (tempObject.getId() == ID.BasicEnemy) {
 				if(getBounds().intersects(tempObject.getBounds())) {
 					
-					rpg.createGameScreen();
+				//	rpg.createGameScreen();
 					
 					tempObject.setVelX(0);
 					tempObject.setVelY(0);
