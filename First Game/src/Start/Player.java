@@ -38,6 +38,7 @@ public class Player extends GameObject {
 		collision();
 	}
 	private void collision() {
+		String position = "";
 		for (int i= 0; i <handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
 			if (tempObject.getId() == ID.BasicEnemy) {
@@ -45,11 +46,20 @@ public class Player extends GameObject {
 					
 				//	rpg.createGameScreen();
 					
-					handler.removeObject(tempObject);
 					new CombatClass();
-					
+					while(position != "win" && position != "lose") {
+						// loop while we are in battle
+						position = CombatClass.getPosition();
+						System.out.println(position);
+					}
 					//HUD.HEALTH --;
-					BasicEnemy.setHealth(0); 
+					
+					if(CombatClass.getPosition() == "win") {
+						handler.removeObject(tempObject);
+					}
+					else {
+						BasicEnemy.setHealth(CombatClass.getHealth());
+					}
 					
 				}
 				

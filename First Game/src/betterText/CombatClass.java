@@ -28,7 +28,7 @@ public class CombatClass {
 	int playerHP, monsterHP;
 
 	Random random;
-	String position;
+	static String position;
 	Weapon weapon;
 
 	ChoiceHandler choiceHandler = new ChoiceHandler();
@@ -36,7 +36,7 @@ public class CombatClass {
 	ClassGreenRoom grnRoom = new ClassGreenRoom();
 	Hero hero = null;
 
-	Monster monster;
+	static Monster monster;
 	MonsterCage monsterCage = new MonsterCage();
 
 	public CombatClass() {
@@ -376,6 +376,12 @@ public class CombatClass {
 				}
 			}
 		}
+	}
+	public static int getHealth() {
+		return monster.getHealth();
+	}
+	public static String getPosition() {
+		return position;
 	}
 
 	public static void main(String[] args) {
