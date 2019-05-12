@@ -44,10 +44,7 @@ public class Player extends GameObject {
 					
 				//	rpg.createGameScreen();
 					
-					tempObject.setVelX(0);
-					tempObject.setVelY(0);
-					tempObject.setX(-6000);
-					tempObject.setY(-6000);
+					handler.removeObject(tempObject);
 					
 					//HUD.HEALTH --;
 					BasicEnemy.setHealth(0); 
