@@ -68,7 +68,18 @@ public class Player extends GameObject {
 	}
 	
 	public void render(Graphics g) {
-		if (id == ID.Player) g.setColor(Color.white);
+		if (id == ID.Player) {
+			/*
+			if(Class.getClassName == "Warrior") {
+				
+			}else if(Class.getClassName == "Thief") {
+				
+			}else if(Class.getClassName == "Lancer") {
+				
+			}
+			*/
+			g.setColor(Color.white);
+		}
 		
 		
 		g.fillRect(x, y, 32, 32);
