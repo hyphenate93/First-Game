@@ -34,17 +34,16 @@ public class CombatClass {
 	String position;
 	Weapon weapon;
 
-	//TitleScreenHandler tsHandler = new TitleScreenHandler();
 	ChoiceHandler choiceHandler = new ChoiceHandler();
 
 	ClassGreenRoom grnRoom = new ClassGreenRoom();
 	Hero hero = null;
-	
+
 	Monster monster;
 	MonsterCage monsterCage = new MonsterCage();
-	
+
 	public CombatClass() {
-		
+
 		window = new JFrame();
 		window.setSize(640, 480);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,12 +114,12 @@ public class CombatClass {
 		playerPanel.setBackground(Color.black);
 		playerPanel.setLayout(new GridLayout(6, 1));
 		con.add(playerPanel);
-		
+
 		nameLabel = new JLabel("Name: ");
 		nameLabel.setFont(normalFont);
 		nameLabel.setForeground(Color.white);
 		playerPanel.add(nameLabel);
-		
+
 		nameLabelName = new JLabel();
 		nameLabelName.setFont(normalFont);
 		nameLabelName.setForeground(Color.white);
@@ -130,7 +129,7 @@ public class CombatClass {
 		hpLabel.setFont(normalFont);
 		hpLabel.setForeground(Color.white);
 		playerPanel.add(hpLabel);
-		
+
 		hpLabelNumber = new JLabel("" + playerHP);
 		hpLabelNumber.setFont(normalFont);
 		hpLabelNumber.setForeground(Color.white);
@@ -149,27 +148,25 @@ public class CombatClass {
 		playerSetup();
 
 		window.setVisible(true);
-		
+
 	}
 
-	/*public void storyStart() {
-		position = "storyStart";
-
-		mainTextArea.setText("Your quest begins outside of town. \nThere is something going on. Investigate!");
-
-		choice1.setText("");
-		choice2.setText("Lets go!");
-		choice3.setText("");
-		choice4.setText("");
-
-		choice1.setVisible(false);
-		// choice2.setVisible(false);
-		choice3.setVisible(false);
-		choice4.setVisible(false);
-	}*/
+	/*
+	 * public void storyStart() { position = "storyStart";
+	 * 
+	 * mainTextArea.
+	 * setText("Your quest begins outside of town. \nThere is something going on. Investigate!"
+	 * );
+	 * 
+	 * choice1.setText(""); choice2.setText("Lets go!"); choice3.setText("");
+	 * choice4.setText("");
+	 * 
+	 * choice1.setVisible(false); // choice2.setVisible(false);
+	 * choice3.setVisible(false); choice4.setVisible(false); }
+	 */
 
 	public void playerSetup() {
-		
+
 		hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
 		monster = monsterCage.getMonster("Rat");
 
@@ -179,14 +176,13 @@ public class CombatClass {
 		hpLabelNumber.setText("" + playerHP);
 		weaponLabelName.setText(hero.getClassType().getWpn().wpnName);
 
-		if(monster.getName() == "Rat") { 
-			rat(); 
-		} else if(monster.getName() == "Rat-man") { 
-			ratMan(); 
-		} else if (monster.getName() == "Rat Monster") { 
-			ratMonster(); 
+		if (monster.getName() == "Rat") {
+			rat();
+		} else if (monster.getName() == "Rat-man") {
+			ratMan();
+		} else if (monster.getName() == "Rat Monster") {
+			ratMonster();
 		}
-
 
 	}
 
@@ -195,7 +191,7 @@ public class CombatClass {
 
 		mainTextArea.setText("You see an unusally large rat. \nIt charges at you, trying to bite at your leggs!");
 
-		choice1.setText("Attack");
+		choice1.setText("Fight");
 		choice2.setText("Block");
 		choice3.setText("Run");
 		choice4.setText("Inventory");
@@ -206,7 +202,7 @@ public class CombatClass {
 
 		mainTextArea.setText("You see a rat-man. \nIt charges at you, trying to bite at your chest!");
 
-		choice1.setText("Attack");
+		choice1.setText("Fight");
 		choice2.setText("Block");
 		choice3.setText("Run");
 		choice4.setText("Inventory");
@@ -217,33 +213,47 @@ public class CombatClass {
 
 		mainTextArea.setText("You see a rat monster. \nIt charges at you, trying to bite at your head!");
 
-		choice1.setText("Attack");
+		choice1.setText("Fight");
 		choice2.setText("Block");
 		choice3.setText("Run");
 		choice4.setText("Inventory");
 	}
-	
+
+	public void fight() {
+		position = "fight";
+
+		mainTextArea.setText("Monster HP: " + monster.getHealth() + "\n\nWhat do you do?");
+
+		choice1.setText("Attack");
+		choice2.setText("Run");
+		choice3.setText("");
+		choice4.setText("");
+
+	}
+
 	public void playerAttack() {
 		position = "playerAttack";
 
 		int playerDamage = 0;
 
 		if (hero.getClassType().getWpn().getWpnName() == "Sword") {
-			playerDamage = new java.util.Random().nextInt(hero.getClassType().getWpn().getDmg() + hero.getClassType().getAtkPwr());
+			playerDamage = new java.util.Random()
+					.nextInt(hero.getClassType().getWpn().getDmg() + hero.getClassType().getAtkPwr());
 		} else if (hero.getClassType().getWpn().getWpnName() == "Long Sword") {
-			playerDamage = new java.util.Random().nextInt(hero.getClassType().getWpn().getDmg() + hero.getClassType().getAtkPwr());
+			playerDamage = new java.util.Random()
+					.nextInt(hero.getClassType().getWpn().getDmg() + hero.getClassType().getAtkPwr());
 		}
 
 		mainTextArea.setText("You attacked the monster and did " + playerDamage + " damage!");
 
-		monsterHP -= playerDamage;
+		monster.health -= playerDamage;
 
 		choice1.setText("Continue");
 		choice2.setText("");
 		choice3.setText("");
 		choice4.setText("");
 	}
-	
+
 	public void monsterAttack() {
 		position = "monsterAttack";
 
@@ -261,6 +271,37 @@ public class CombatClass {
 		choice4.setText("");
 	}
 
+	public void win() {
+		position = "win";
+
+		mainTextArea.setText("You defeated the monster!");
+
+		choice1.setText(""); choice1.setVisible(false);
+		choice2.setText("Continue");
+		choice3.setText(""); choice3.setVisible(false);
+		choice4.setText(""); choice4.setVisible(false);
+
+	}
+
+	public void lose() {
+		position = "lose";
+
+		mainTextArea.setText("You are dead! \n\n<GAME OVER>");
+
+		choice1.setText("");
+		choice2.setText("Ok");
+		choice3.setText("");
+		choice4.setText("");
+
+		choice1.setVisible(false);
+		choice3.setVisible(false);
+		choice4.setVisible(false);
+	}
+	
+	public void cont() {
+		window.dispose();
+	}
+
 	public class ChoiceHandler implements ActionListener {
 
 		public void actionPerformed(ActionEvent event) {
@@ -271,35 +312,69 @@ public class CombatClass {
 			case "rat":
 				switch (yourChoice) {
 				case "c1":
-					playerAttack();
+					fight();
 					break;
 				case "c2":
-					//run();
+					// run();
 					break;
 				case "c3":
-					//block();
+					// block();
 					break;
 				case "c4":
-					//inventory();
+					// inventory();
 					break;
 				}
 				break;
-			
+
 			case "playerAttack":
 				switch (yourChoice) {
 				case "c1":
-					
+					if (monster.getHealth() < 1) {
+						win();
+					} else {
+						monsterAttack();
+					}
+					break;
+				}
+				break;
+			case "fight":
+				switch (yourChoice) {
+				case "c1":
+					playerAttack();
+					break;
+				}
+				break;
+			case "monsterAttack":
+				switch (yourChoice) {
+				case "c1":
+					if (playerHP < 1) {
+						lose();
+					} else {
+						fight();
+					}
+					break;
+				}
+				break;
+			case "win":
+				switch (yourChoice) {
+				case "c2":
+					cont();
+					break;
+				}
+				break;
+			case "lose":
+				switch (yourChoice) {
+				case "c2":
+					cont();
 					break;
 				}
 				break;
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		new CombatClass();
 	}
-
-	
 
 }
