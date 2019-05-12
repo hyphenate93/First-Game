@@ -25,7 +25,7 @@ public class CombatClass {
 	JButton startButton, choice1, choice2, choice3, choice4;
 	JTextArea mainTextArea;
 
-	int playerHP, monsterHP;
+	static int playerHP, monsterHP;
 
 	Random random;
 	static String position;
@@ -34,7 +34,7 @@ public class CombatClass {
 	ChoiceHandler choiceHandler = new ChoiceHandler();
 
 	ClassGreenRoom grnRoom = new ClassGreenRoom();
-	Hero hero = null;
+	Hero hero;
 
 	static Monster monster;
 	MonsterCage monsterCage = new MonsterCage();
@@ -377,8 +377,11 @@ public class CombatClass {
 			}
 		}
 	}
+	public static int getMonsterHealth() {
+		return monsterHP;
+	}
 	public static int getHealth() {
-		return monster.getHealth();
+		return playerHP;
 	}
 	public static String getPosition() {
 		return position;
