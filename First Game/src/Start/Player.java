@@ -71,11 +71,12 @@ public class Player extends GameObject {
 	public void render(Graphics g) {
 		if (id == ID.Player) {
 			
-			if(hero.getName() == "Andreas") {
-				g.setColor(Color.GRAY);
-			}else if(hero.getName() == "Niklas") {
+			if(hero.getClassType().getClassName() == "Warrior") {
+				g.setColor(new Color(102, 51, 0));
+				// Brown
+			}else if(hero.getClassType().getClassName() == "Thief") {
 				g.setColor(Color.YELLOW);
-			}else if(hero.getName() == "Oscar") {
+			}else if(hero.getClassType().getClassName() == "Lancer") {
 				g.setColor(Color.GREEN);
 			}
 		}
