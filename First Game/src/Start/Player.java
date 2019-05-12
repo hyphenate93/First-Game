@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
+import betterText.CombatClass;
 import textPart.CharGUI;
 import textPart.Hero;
 import textPart.RPGScreen;
@@ -45,6 +46,7 @@ public class Player extends GameObject {
 				//	rpg.createGameScreen();
 					
 					handler.removeObject(tempObject);
+					new CombatClass();
 					
 					//HUD.HEALTH --;
 					BasicEnemy.setHealth(0); 
