@@ -12,7 +12,6 @@ import javax.swing.JTextArea;
 
 import betterText.GameTest.ChoiceHandler;
 
-
 public class UI {
 
 	public JFrame window;
