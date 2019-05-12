@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
+import betterText.ClassGreenRoom;
 import betterText.CombatClass;
 import textPart.CharGUI;
 import betterText.Hero;
@@ -69,16 +70,14 @@ public class Player extends GameObject {
 	
 	public void render(Graphics g) {
 		if (id == ID.Player) {
-			/*
-			if(Class.getClassName == "Warrior") {
-				
-			}else if(Class.getClassName == "Thief") {
-				
-			}else if(Class.getClassName == "Lancer") {
-				
+			
+			if(hero.getName() == "Andreas") {
+				g.setColor(Color.GRAY);
+			}else if(hero.getName() == "Niklas") {
+				g.setColor(Color.YELLOW);
+			}else if(hero.getName() == "Oscar") {
+				g.setColor(Color.GREEN);
 			}
-			*/
-			g.setColor(Color.white);
 		}
 		
 		
