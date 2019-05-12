@@ -1,5 +1,7 @@
 package betterText;
 
+import Start.Game;
+
 public class StartUp {
 	
 	GameTest game;
@@ -149,7 +151,7 @@ public class StartUp {
 	}
 	
 	public void gameStart() {
-		//new Game();
+		new Game();
 	}
 	
 }

@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
+import betterText.GameTest;
 import textPart.CharGUI;
 import textPart.Hero;
 
@@ -22,17 +23,18 @@ public class Game extends Canvas implements Runnable {
 	private Random r;
 	private HUD hud;
 	static Hero hero;
+	GameTest gt;
 
 	// prompts character creation screen
-	CharGUI test = new CharGUI();
+	//CharGUI test = new CharGUI();
 
 	public Game() {
 		// waits for the player to finish the character creation
-		while (hero == null) {
+		/*while (hero == null) {
 
 			hero = test.getHero();
 
-		}
+		}*/
 
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
