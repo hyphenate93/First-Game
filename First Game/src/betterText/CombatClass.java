@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -14,8 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
-import Start.Game;
 
 public class CombatClass {
 
@@ -150,20 +147,6 @@ public class CombatClass {
 		window.setVisible(true);
 
 	}
-
-	/*
-	 * public void storyStart() { position = "storyStart";
-	 * 
-	 * mainTextArea.
-	 * setText("Your quest begins outside of town. \nThere is something going on. Investigate!"
-	 * );
-	 * 
-	 * choice1.setText(""); choice2.setText("Lets go!"); choice3.setText("");
-	 * choice4.setText("");
-	 * 
-	 * choice1.setVisible(false); // choice2.setVisible(false);
-	 * choice3.setVisible(false); choice4.setVisible(false); }
-	 */
 
 	public void playerSetup() {
 
@@ -301,6 +284,22 @@ public class CombatClass {
 	public void cont() {
 		window.dispose();
 	}
+	
+	public void run() {
+		position = "run";
+		
+		mainTextArea.setText("You run from the monster");
+		
+		choice1.setText("");
+		choice2.setText("Ok");
+		choice3.setText("");
+		choice4.setText("");
+
+		choice1.setVisible(false);
+		choice3.setVisible(false);
+		choice4.setVisible(false);
+		
+	}
 
 	public class ChoiceHandler implements ActionListener {
 
@@ -315,10 +314,10 @@ public class CombatClass {
 					fight();
 					break;
 				case "c2":
-					// run();
+					// block();
 					break;
 				case "c3":
-					// block();
+					run();
 					break;
 				case "c4":
 					// inventory();
@@ -369,6 +368,12 @@ public class CombatClass {
 					break;
 				}
 				break;
+			case "run":
+				switch (yourChoice) {
+				case "c2":
+					cont();
+					break;
+				}
 			}
 		}
 	}
