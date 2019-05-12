@@ -93,9 +93,9 @@ public class HashTable {
 	
 	
 	
-	private int findPos(Item itm)
-    {
-        int offset = 1;
+	public int findPos(Item itm){
+       
+		int offset = 1;
         int index = hashCalc(itm);
         
         while(theArray[index] != null && !theArray[index].name.equals(itm.name))
@@ -130,6 +130,13 @@ public class HashTable {
 		return null;
 	}
 
+	
+	
+	public boolean contains(Item itm){
+        int key = findPos(itm);
+        return isActive(key) && theArray[key].name.equals(itm.name);
+    }
+	
 	
 	
 	public boolean isActive(int index) {
