@@ -1,11 +1,15 @@
 package Start;
 
 import java.awt.Color;
+
 import java.awt.Graphics;
+
+import textPart.CharGUI;
+import textPart.Hero;
 
 public class HUD {
 	
-	public static int HEALTH = 100;
+	public static int HEALTH = Game.hero.getClassType().getHp();
 
 	public void tick () {
 		

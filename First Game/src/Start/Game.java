@@ -6,7 +6,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
-import java.util.Scanner;
 
 import textPart.CharGUI;
 import textPart.Hero;
@@ -23,7 +22,7 @@ public class Game extends Canvas implements Runnable {
 	private Handler handler;
 	private Random r;
 	private HUD hud;
-	private Hero hero;
+	static Hero hero;
 	
 	// prompts character creation screen
 			CharGUI test = new CharGUI();	
@@ -41,7 +40,7 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 		new Window(WIDTH, HEIGHT, "Let's Build a Game", this);
 		hud = new HUD();
-		System.out.println(handler);
+		//System.out.println(handler);
 		if(hero != null) {
 			// create the objects for the game IE heroes or enemies
 			handler.addObject(new Player(WIDTH / 2 - 64, HEIGHT / 2 - 64, hero.getClassType().getHp(), ID.Player, hero, handler));
