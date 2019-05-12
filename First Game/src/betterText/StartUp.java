@@ -1,8 +1,6 @@
 package betterText;
 
-import Start.Game;
-
-public class Story {
+public class StartUp {
 	
 	GameTest game;
 	UI ui;
@@ -15,7 +13,7 @@ public class Story {
 	Weapon weapon;
 	
 
-	public Story(GameTest game, UI ui, VisibilityManager vManager) {
+	public StartUp(GameTest game, UI ui, VisibilityManager vManager) {
 		
 		this.game = game;
 		this.ui = ui;
@@ -26,7 +24,6 @@ public class Story {
 	public void defaultSetup() {
 	
 		ui.hpLabelNumber.setText("");
-		
 		ui.weaponLabelName.setText("");
 	}
 	
