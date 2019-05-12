@@ -30,7 +30,7 @@ public class Game extends Canvas implements Runnable {
 	
 	public Game() {
 		// sets hero from user selection 
-		while(test.getHero() == null) {
+		while(hero == null) {
 			
 			hero = test.getHero();
 			
@@ -41,7 +41,8 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 		new Window(WIDTH, HEIGHT, "Let's Build a Game", this);
 		hud = new HUD();
-		if(test.getHero() != null) {
+		System.out.println(handler);
+		if(hero != null) {
 			// create the objects for the game IE heroes or enemies
 			handler.addObject(new Player(WIDTH / 2 - 64, HEIGHT / 2 - 64, hero.getClassType().getHp(), ID.Player, hero, handler));
 			handler.addObject(new BasicEnemy((WIDTH / 2 - 32), (HEIGHT / 2 - 32),100, ID.BasicEnemy));

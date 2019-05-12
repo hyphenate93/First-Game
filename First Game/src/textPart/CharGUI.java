@@ -36,7 +36,7 @@ public class CharGUI {
 	ChoiceHandler choiceHandler = new ChoiceHandler();
 
 	ClassGreenRoom grnRoom = new ClassGreenRoom();
-	Hero hero = null;
+	Hero hero;
 	boolean skip = false;
 	
 	public CharGUI() {
