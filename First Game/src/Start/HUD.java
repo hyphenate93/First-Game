@@ -24,6 +24,8 @@ public class HUD {
 		g.fillRect(15, 15, HEALTH *2, 32);
 		g.setColor(Color.white);
 		g.drawRect(15, 15, HEALTH *2, 32);
+		
+		g.drawString("Class " + Game.hero.getClassType().getClassName(), 15, 64);
 	}
 	
 }
