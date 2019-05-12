@@ -7,7 +7,7 @@ import java.util.Random;
 
 import betterText.CombatClass;
 import textPart.CharGUI;
-import textPart.Hero;
+import betterText.Hero;
 import textPart.RPGScreen;
 
 public class Player extends GameObject {
