@@ -245,24 +245,24 @@ public class CombatClass {
 
 	public void playerSetup() {
 
-<<<<<<< HEAD
+
 		hero = new Hero(Game.hero.getClassType().getClassName(), Game.hero.getClassType());
 		monster = monsterCage.getMonster("Rat");
-=======
+
 		hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
 		monster = monsterCage.getMonster("Rat Monster");
->>>>>>> master
+
 
 		playerHP = Game.hero.getClassType().getHp();
 		weapon = Game.hero.getClassType().getWpn();
 		nameLabelName.setText(Game.hero.getName());
 		hpLabelNumber.setText("" + playerHP);
-<<<<<<< HEAD
+
 		weaponLabelName.setText(Game.hero.getClassType().getWpn().wpnName);
-=======
+
 		weaponLabelName.setText(hero.getClassType().getWpn().wpnName);
 		inventoryStatus = "close";
->>>>>>> master
+
 
 		if (monster.getName() == "Rat") {
 			rat();
