@@ -3,7 +3,7 @@ package inventory;
 
 /*
  *  Todo
- *  
+ *  LAT MIG PUSHA!
  *  Max fill HashTable to ½ arraySize
  */
 
