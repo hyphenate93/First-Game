@@ -107,7 +107,7 @@ public class StartUp {
 		
 		player.hp = hero.getClassType().getHp();
 		weapon = hero.getClassType().getWpn();
-		
+				
 		ui.choice1.setText("Ok"); 
 		ui.choice2.setText("No");
 		ui.choice3.setText("");
@@ -148,10 +148,12 @@ public class StartUp {
 		ui.choice2.setText("Lets go!");
 		game.nextPosition2 = "gameStart";
 		
+		
 	}
 	
 	public void gameStart() {
 		new Game();
+		UI.window.setVisible(false);
 		
 	}
 	public static Hero getHero() {

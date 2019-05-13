@@ -53,7 +53,7 @@ public class Player extends GameObject {
 					while (position != "win" && position != "lose" && position != "run") {
 						// loop while we are in battle
 						position = CombatClass.getPosition();
-						System.out.println(position);
+						System.out.println();
 					}
 					// HUD.HEALTH --;
 
@@ -61,6 +61,7 @@ public class Player extends GameObject {
 						// we won, remove the monster and set our health
 						Player.setHealth(CombatClass.getHealth());
 						handler.removeObject(tempObject);
+						HUD.HEALTH = Player.getHealth();
 					}
 					else {
 						// either lost or ran, set new hp values
@@ -70,6 +71,7 @@ public class Player extends GameObject {
 						handler.object.get(0).setY(Game.WIDTH / 2 - 64);
 						//WIDTH / 2 - 64, HEIGHT / 2 - 64
 						handler.object.get(0).setX(Game.HEIGHT / 2 - 64);
+						HUD.HEALTH = Player.getHealth();
 						
 					}
 

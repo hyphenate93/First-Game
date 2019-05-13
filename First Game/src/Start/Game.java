@@ -23,7 +23,7 @@ public class Game extends Canvas implements Runnable {
 	private Handler handler;
 	private Random r;
 	private HUD hud;
-	static Hero hero;
+	public static Hero hero;
 	//GameTest gt = new GameTest();
 
 	// prompts character creation screen
