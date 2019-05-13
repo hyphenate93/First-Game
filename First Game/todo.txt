@@ -1,0 +1,5 @@
+1. items
+2. maze
+3. score
+4. "levels"
+5. musik
