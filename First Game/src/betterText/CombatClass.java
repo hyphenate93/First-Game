@@ -540,7 +540,6 @@ public class CombatClass {
 				}
 				break;
 			}
-			
 		}
 	}
 
