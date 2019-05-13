@@ -20,20 +20,22 @@ public class CombatClass {
 
 	JFrame window;
 	Container con;
-	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
+	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, inventoryPanel;
 	JLabel titleNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName, nameLabelName, nameLabel;
 	Font titleFont = new Font("Times New Roman", Font.PLAIN, 55);
 	Font normalFont = new Font("Times New Roman", Font.PLAIN, 22);
-	JButton startButton, choice1, choice2, choice3, choice4;
+	JButton startButton, choice1, choice2, choice3, inventoryButton, inventoryButton1, inventoryButton2,
+			inventoryButton3, inventoryButton4, inventoryButton5, inventoryButton6, inventoryButton7, inventoryButton8, inventoryButton9;
 	JTextArea mainTextArea;
 
 	static int playerHP, monsterHP;
 
 	Random random;
-	static String position;
+	static String position, inventoryStatus;
 	Weapon weapon;
 
 	ChoiceHandler choiceHandler = new ChoiceHandler();
+	InventoryHandler iHandler = new InventoryHandler();
 
 	ClassGreenRoom grnRoom = new ClassGreenRoom();
 	Hero hero;
@@ -51,6 +53,13 @@ public class CombatClass {
 		window.setLocationRelativeTo(null);
 		window.setLayout(null);
 		con = window.getContentPane();
+
+		inventoryPanel = new JPanel();
+		inventoryPanel.setBounds(15, 230, 600, 150);
+		inventoryPanel.setBackground(Color.blue);
+		inventoryPanel.setForeground(Color.white);
+		inventoryPanel.setLayout(new GridLayout(3, 6));
+		con.add(inventoryPanel);
 
 		mainTextPanel = new JPanel();
 		mainTextPanel.setBounds(10, 10, 450, 300);
@@ -99,14 +108,98 @@ public class CombatClass {
 		choice3.setActionCommand("c3");
 		choiceButtonPanel.add(choice3);
 
-		choice4 = new JButton("Four");
-		choice4.setBackground(Color.black);
-		choice4.setForeground(Color.white);
-		choice4.setFont(normalFont);
-		choice4.setFocusPainted(false);
-		choice4.addActionListener(choiceHandler);
-		choice4.setActionCommand("c4");
-		choiceButtonPanel.add(choice4);
+		inventoryButton = new JButton("Inventory");
+		inventoryButton.setBackground(Color.black);
+		inventoryButton.setForeground(Color.white);
+		inventoryButton.setFont(normalFont);
+		inventoryButton.setFocusPainted(false);
+		inventoryButton.addActionListener(iHandler);
+		inventoryButton.setActionCommand("inventoryButton");
+		choiceButtonPanel.add(inventoryButton);
+
+		inventoryButton1 = new JButton();
+		inventoryButton1.setBackground(Color.black);
+		inventoryButton1.setForeground(Color.white);
+		inventoryButton1.setFont(normalFont);
+		inventoryButton1.setFocusPainted(false);
+		inventoryButton1.addActionListener(iHandler);
+		inventoryButton1.setActionCommand("Item1");
+		inventoryPanel.add(inventoryButton1);
+
+		inventoryButton2 = new JButton();
+		inventoryButton2.setBackground(Color.black);
+		inventoryButton2.setForeground(Color.white);
+		inventoryButton2.setFont(normalFont);
+		inventoryButton2.setFocusPainted(false);
+		inventoryButton2.addActionListener(iHandler);
+		inventoryButton2.setActionCommand("Item2");
+		inventoryPanel.add(inventoryButton2);
+		
+		inventoryButton3 = new JButton();
+		inventoryButton3.setBackground(Color.black);
+		inventoryButton3.setForeground(Color.white);
+		inventoryButton3.setFont(normalFont);
+		inventoryButton3.setFocusPainted(false);
+		inventoryButton3.addActionListener(iHandler);
+		inventoryButton3.setActionCommand("Item3");
+		inventoryPanel.add(inventoryButton3);
+		
+		inventoryButton4 = new JButton();
+		inventoryButton4.setBackground(Color.black);
+		inventoryButton4.setForeground(Color.white);
+		inventoryButton4.setFont(normalFont);
+		inventoryButton4.setFocusPainted(false);
+		inventoryButton4.addActionListener(iHandler);
+		inventoryButton4.setActionCommand("Item4");
+		inventoryPanel.add(inventoryButton4);
+		
+		inventoryButton5 = new JButton();
+		inventoryButton5.setBackground(Color.black);
+		inventoryButton5.setForeground(Color.white);
+		inventoryButton5.setFont(normalFont);
+		inventoryButton5.setFocusPainted(false);
+		inventoryButton5.addActionListener(iHandler);
+		inventoryButton5.setActionCommand("Item5");
+		inventoryPanel.add(inventoryButton5);
+		
+		inventoryButton6 = new JButton();
+		inventoryButton6.setBackground(Color.black);
+		inventoryButton6.setForeground(Color.white);
+		inventoryButton6.setFont(normalFont);
+		inventoryButton6.setFocusPainted(false);
+		inventoryButton6.addActionListener(iHandler);
+		inventoryButton6.setActionCommand("Item2");
+		inventoryPanel.add(inventoryButton6);
+		
+		inventoryButton7 = new JButton();
+		inventoryButton7.setBackground(Color.black);
+		inventoryButton7.setForeground(Color.white);
+		inventoryButton7.setFont(normalFont);
+		inventoryButton7.setFocusPainted(false);
+		inventoryButton7.addActionListener(iHandler);
+		inventoryButton7.setActionCommand("Item7");
+		inventoryPanel.add(inventoryButton7);
+		
+		inventoryButton8 = new JButton();
+		inventoryButton8.setBackground(Color.black);
+		inventoryButton8.setForeground(Color.white);
+		inventoryButton8.setFont(normalFont);
+		inventoryButton8.setFocusPainted(false);
+		inventoryButton8.addActionListener(iHandler);
+		inventoryButton8.setActionCommand("Item8");
+		inventoryPanel.add(inventoryButton8);
+		
+		inventoryButton9 = new JButton();
+		inventoryButton9.setBackground(Color.black);
+		inventoryButton9.setForeground(Color.white);
+		inventoryButton9.setFont(normalFont);
+		inventoryButton9.setFocusPainted(false);
+		inventoryButton9.addActionListener(iHandler);
+		inventoryButton9.setActionCommand("Item9");
+		inventoryPanel.add(inventoryButton9);
+		
+		inventoryPanel.setVisible(false);		
+		
 
 		playerPanel = new JPanel();
 		playerPanel.setBounds(470, 15, 150, 150);
@@ -152,14 +245,24 @@ public class CombatClass {
 
 	public void playerSetup() {
 
+<<<<<<< HEAD
 		hero = new Hero(Game.hero.getClassType().getClassName(), Game.hero.getClassType());
 		monster = monsterCage.getMonster("Rat");
+=======
+		hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
+		monster = monsterCage.getMonster("Rat Monster");
+>>>>>>> master
 
 		playerHP = Game.hero.getClassType().getHp();
 		weapon = Game.hero.getClassType().getWpn();
 		nameLabelName.setText(Game.hero.getName());
 		hpLabelNumber.setText("" + playerHP);
+<<<<<<< HEAD
 		weaponLabelName.setText(Game.hero.getClassType().getWpn().wpnName);
+=======
+		weaponLabelName.setText(hero.getClassType().getWpn().wpnName);
+		inventoryStatus = "close";
+>>>>>>> master
 
 		if (monster.getName() == "Rat") {
 			rat();
@@ -179,7 +282,7 @@ public class CombatClass {
 		choice1.setText("Fight");
 		choice2.setText("Block");
 		choice3.setText("Run");
-		choice4.setText("Inventory");
+		inventoryButton.setText("Inventory");
 	}
 
 	public void ratMan() {
@@ -190,7 +293,7 @@ public class CombatClass {
 		choice1.setText("Fight");
 		choice2.setText("Block");
 		choice3.setText("Run");
-		choice4.setText("Inventory");
+		inventoryButton.setText("Inventory");
 	}
 
 	public void ratMonster() {
@@ -201,7 +304,7 @@ public class CombatClass {
 		choice1.setText("Fight");
 		choice2.setText("Block");
 		choice3.setText("Run");
-		choice4.setText("Inventory");
+		inventoryButton.setText("Inventory");
 	}
 
 	public void fight() {
@@ -212,7 +315,7 @@ public class CombatClass {
 		choice1.setText("Attack");
 		choice2.setText("Run");
 		choice3.setText("");
-		choice4.setText("");
+		inventoryButton.setText("");
 
 	}
 
@@ -250,7 +353,7 @@ public class CombatClass {
 		choice1.setText("Continue");
 		choice2.setText("");
 		choice3.setText("");
-		choice4.setText("");
+		inventoryButton.setText("");
 	}
 
 	public void monsterAttack() {
@@ -261,13 +364,13 @@ public class CombatClass {
 
 		mainTextArea.setText("The monster attacked you and you take " + monsterDamage + " damage!");
 
-		playerHP -= monsterDamage;
-		hpLabelNumber.setText("" + playerHP);
+		hero.getClassType().hp -= monsterDamage;
+		hpLabelNumber.setText("" + hero.getClassType().hp);
 
 		choice1.setText("Fight");
 		choice2.setText("");
 		choice3.setText("");
-		choice4.setText("");
+		inventoryButton.setText("");
 	}
 
 	public void win() {
@@ -275,10 +378,13 @@ public class CombatClass {
 
 		mainTextArea.setText("You defeated the monster!");
 
-		choice1.setText(""); choice1.setVisible(false);
+		choice1.setText("");
+		choice1.setVisible(false);
 		choice2.setText("Continue");
-		choice3.setText(""); choice3.setVisible(false);
-		choice4.setText(""); choice4.setVisible(false);
+		choice3.setText("");
+		choice3.setVisible(false);
+		inventoryButton.setText("");
+		inventoryButton.setVisible(false);
 
 	}
 
@@ -290,31 +396,31 @@ public class CombatClass {
 		choice1.setText("");
 		choice2.setText("Ok");
 		choice3.setText("");
-		choice4.setText("");
+		inventoryButton.setText("");
 
 		choice1.setVisible(false);
 		choice3.setVisible(false);
-		choice4.setVisible(false);
+		inventoryButton.setVisible(false);
 	}
-	
+
 	public void cont() {
 		window.dispose();
 	}
-	
+
 	public void run() {
 		position = "run";
-		
+
 		mainTextArea.setText("You run from the monster");
-		
+
 		choice1.setText("");
 		choice2.setText("Ok");
 		choice3.setText("");
-		choice4.setText("");
+		inventoryButton.setText("");
 
 		choice1.setVisible(false);
 		choice3.setVisible(false);
-		choice4.setVisible(false);
-		
+		inventoryButton.setVisible(false);
+
 	}
 
 	public class ChoiceHandler implements ActionListener {
@@ -325,6 +431,38 @@ public class CombatClass {
 
 			switch (position) {
 			case "rat":
+				switch (yourChoice) {
+				case "c1":
+					fight();
+					break;
+				case "c2":
+					// block();
+					break;
+				case "c3":
+					run();
+					break;
+				case "c4":
+					// inventory();
+					break;
+				}
+				break;
+			case "ratMan":
+				switch (yourChoice) {
+				case "c1":
+					fight();
+					break;
+				case "c2":
+					// block();
+					break;
+				case "c3":
+					run();
+					break;
+				case "c4":
+					// inventory();
+					break;
+				}
+				break;
+			case "ratMonster":
 				switch (yourChoice) {
 				case "c1":
 					fight();
@@ -393,18 +531,41 @@ public class CombatClass {
 			}
 		}
 	}
+
 	public static int getMonsterHealth() {
 		return monsterHP;
 	}
+
 	public static int getHealth() {
 		return playerHP;
 	}
+
 	public static String getPosition() {
 		return position;
 	}
 
 	public static void main(String[] args) {
 		new CombatClass();
+	}
+
+	public class InventoryHandler implements ActionListener {
+
+		public void actionPerformed(ActionEvent event) {
+
+			String yourChoice = event.getActionCommand();
+			
+			switch(yourChoice) {
+			case "inventoryButton":
+				if(inventoryStatus.equals("close")) {
+					inventoryPanel.setVisible(true);
+					inventoryStatus = "open";
+				} else if(inventoryStatus.equals("open")){
+					inventoryPanel.setVisible(false);
+					inventoryStatus = "close";
+				}
+				break;
+			}
+		}
 	}
 
 }
