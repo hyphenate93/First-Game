@@ -13,6 +13,7 @@ public class HashTable {
 	Item[] theArray;
 
 	int arraySize;
+	static int numOfItems;
 
 	
 	
@@ -31,13 +32,16 @@ public class HashTable {
        
         if(emptyIndex(key)) {
         theArray[key] = itm;
+        numOfItems++;
 		}
         else if(notActive(itm, key)) {
         	theArray[key].countUp();
         	theArray[key].isActive = true;
+        	numOfItems++;
         }	
-        else if(isActive(key) && theArray[key].name.equals(itm.name)) {
+        else if(indexActive(key) && theArray[key].name.equals(itm.name)) {
             theArray[key].countUp();
+            numOfItems++;
     	}
 	}
 	
@@ -48,15 +52,16 @@ public class HashTable {
 		int key = hashCalc(itm);
         
         for(int i = key; i < arraySize; i++) {
-        	if(isActive(i) && theArray[i].name.equals(itm.name)) {
+        	if(indexActive(i) && theArray[i].name.equals(itm.name)) {
         		theArray[i].count--;
+        		numOfItems--;
         		if(theArray[i].count == 0){
         			theArray[i].isActive = false;
         		}
         	}
         	if(i == arraySize) {
         		for(int j = 0; j < key; j++) {
-        			if(isActive(i) && theArray[i].name.equals(itm.name)) {
+        			if(indexActive(i) && theArray[i].name.equals(itm.name)) {
                 		theArray[i].count--;
                 		if(theArray[i].count == 0){
                 			theArray[i].isActive = false;
@@ -66,7 +71,7 @@ public class HashTable {
         	}
         }
 	}
-
+	
 	
 	
 	public int hashCalc(Item itm) {
@@ -111,14 +116,13 @@ public class HashTable {
 	
 	
 	
-	// look for first occurence
-	public Item findItem(Item itm) {
+
+	public Item getItem(Item itm) {
 		
 		int key = hashCalc(itm);
 		
 		while (theArray[key] != null) {
-			if (theArray[key] == itm && theArray[key].isActive) {
-				System.out.println("\n" + itm.name + " * " + itm.count + " at index " + key);
+			if (notActive(itm, key) || isActive(itm, key)) {
 				return theArray[key];
 			}
 			++key;
@@ -126,28 +130,50 @@ public class HashTable {
 			key %= arraySize;
 		}
 		// Couldn't locate the key
-		System.out.println("\ncould'nt find " + itm.name);
 		return null;
 	}
 
 	
 	
+	public int getIndex(Item itm) {
+		
+		int key = hashCalc(itm);
+		
+		while (theArray[key] != null) {
+			if (theArray[key] == itm && theArray[key].isActive) {
+			return key;
+		}
+		++key;
+		// out of bounds -> start of array
+		key %= arraySize;
+	}
+	// Couldn't locate the key
+	return -1;
+	}
+	
+	
+	
 	public boolean contains(Item itm){
         int key = findPos(itm);
-        return isActive(key) && theArray[key].name.equals(itm.name);
+        return isActive(itm, key);
     }
 	
 	
 	
-	public boolean isActive(int index) {
+	public boolean indexActive(int index) {
         return theArray[index] != null && theArray[index].isActive;
+    }
+	
+	
+	
+	public boolean isActive(Item itm, int index) {
+        return theArray[index].name.equals(itm.name) && theArray[index].isActive == true;
     }
 	
 	
 	
 	public boolean notActive(Item itm, int index) {
         return theArray[index].name.equals(itm.name) && theArray[index].isActive == false;
-        		//theArray[index] != null && theArray[index].isActive;
     }
 	
 	
@@ -194,15 +220,15 @@ public class HashTable {
     	hashi.insert(ba);
     	hashi.insert(ka);
     	
-    	hashi.findItem(sw);
-    	hashi.findItem(hp);
-    	hashi.findItem(wa);
-    	hashi.findItem(ba);
-    	hashi.findItem(ka);
+    	hashi.getItem(sw);
+    	hashi.getItem(hp);
+    	hashi.getItem(wa);
+    	hashi.getItem(ba);
+    	hashi.getItem(ka);
     	//System.out.println(sw.howMany());
-    	
+    	System.out.println(hashi.contains(hp));
     	hashi.displayTheStack();
-    	
+    	System.out.println(numOfItems);
     	//hashi.remove(hp);
     	//hashi.findItem(hp);
     	//hashi.remove(hp);
@@ -211,8 +237,10 @@ public class HashTable {
     	hashi.remove(hp);
     	hashi.remove(hp);
     	hashi.remove(hp);
-    	//hashi.remove(hp);
-    	
+    	System.out.println(hashi.contains(hp));
+    	hashi.remove(hp);
+    	hashi.getItem(hp);
+    	System.out.println(hashi.contains(hp));
     	hashi.displayTheStack();
     }
 }
