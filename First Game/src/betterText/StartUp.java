@@ -107,7 +107,7 @@ public class StartUp {
 		
 		player.hp = hero.getClassType().getHp();
 		weapon = hero.getClassType().getWpn();
-		
+				
 		ui.choice1.setText("Ok"); 
 		ui.choice2.setText("No");
 		ui.choice3.setText("");
