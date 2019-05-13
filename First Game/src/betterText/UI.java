@@ -14,7 +14,7 @@ import betterText.GameTest.ChoiceHandler;
 
 public class UI {
 
-	public JFrame window;
+	public static JFrame window;
 	public JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
 	public JLabel titleNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName, nameLabel, nameLabelName;
 	public JButton startButton, choice1, choice2, choice3, choice4;
