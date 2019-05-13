@@ -17,5 +17,5 @@ public class Hero {
 	public Class getClassType() {
 		return classType;
 	}
-
+	
 }

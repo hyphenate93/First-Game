@@ -8,8 +8,9 @@ import java.awt.image.BufferStrategy;
 import java.util.Random;
 
 import betterText.GameTest;
-import textPart.CharGUI;
-import textPart.Hero;
+import betterText.StartUp;
+//import textPart.CharGUI;
+import betterText.Hero;
 
 public class Game extends Canvas implements Runnable {
 
@@ -23,18 +24,18 @@ public class Game extends Canvas implements Runnable {
 	private Random r;
 	private HUD hud;
 	static Hero hero;
-	GameTest gt;
+	//GameTest gt = new GameTest();
 
 	// prompts character creation screen
 	//CharGUI test = new CharGUI();
 
 	public Game() {
 		// waits for the player to finish the character creation
-		/*while (hero == null) {
+		while (hero == null) {
 
-			hero = test.getHero();
+			hero = StartUp.getHero();
 
-		}*/
+		}
 
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
@@ -42,8 +43,7 @@ public class Game extends Canvas implements Runnable {
 		hud = new HUD();
 
 		// create the objects for the game IE heroes or enemies
-		handler.addObject(
-				new Player(WIDTH / 2 - 64, HEIGHT / 2 - 64, hero.getClassType().getHp(), ID.Player, hero, handler));
+		handler.addObject(new Player(WIDTH / 2 - 64, HEIGHT / 2 - 64, hero.getClassType().getHp(), ID.Player, hero, handler));
 		handler.addObject(new BasicEnemy((WIDTH / 2 - 32), (HEIGHT / 2 - 32), 100, ID.BasicEnemy));
 
 		r = new Random();
@@ -68,7 +68,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void run() {
-		// this.requestFocus();
+		 this.requestFocus();
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
@@ -130,7 +130,7 @@ public class Game extends Canvas implements Runnable {
 
 	public static void main(String[] args) {
 
-		new Game();
+	//	new Game();
 	}
 
 }

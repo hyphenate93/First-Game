@@ -10,7 +10,7 @@ public class StartUp {
 	Player player = new Player();
 	SuperMonster monster = new SuperMonster();
 	
-	Hero hero = null;
+	public static Hero hero = null;
 	ClassGreenRoom grnRoom = new ClassGreenRoom();
 	Weapon weapon;
 	
@@ -147,11 +147,15 @@ public class StartUp {
 		
 		ui.choice2.setText("Lets go!");
 		game.nextPosition2 = "gameStart";
-
+		
 	}
 	
 	public void gameStart() {
 		new Game();
+		
+	}
+	public static Hero getHero() {
+		return hero;
 	}
 	
 }
