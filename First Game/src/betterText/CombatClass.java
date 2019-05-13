@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import Start.Game;
+
 public class CombatClass {
 
 	JFrame window;
@@ -150,14 +152,14 @@ public class CombatClass {
 
 	public void playerSetup() {
 
-		hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
+		hero = new Hero(Game.hero.getClassType().getClassName(), Game.hero.getClassType());
 		monster = monsterCage.getMonster("Rat");
 
-		playerHP = hero.getClassType().getHp();
-		weapon = hero.getClassType().getWpn();
-		nameLabelName.setText(hero.getName());
+		playerHP = Game.hero.getClassType().getHp();
+		weapon = Game.hero.getClassType().getWpn();
+		nameLabelName.setText(Game.hero.getName());
 		hpLabelNumber.setText("" + playerHP);
-		weaponLabelName.setText(hero.getClassType().getWpn().wpnName);
+		weaponLabelName.setText(Game.hero.getClassType().getWpn().wpnName);
 
 		if (monster.getName() == "Rat") {
 			rat();
@@ -219,12 +221,26 @@ public class CombatClass {
 
 		int playerDamage = 0;
 
-		if (hero.getClassType().getWpn().getWpnName() == "Sword") {
+		if (Game.hero.getClassType().getWpn().getWpnName() == "Sword") {
 			playerDamage = new java.util.Random()
-					.nextInt(hero.getClassType().getWpn().getDmg() + hero.getClassType().getAtkPwr());
-		} else if (hero.getClassType().getWpn().getWpnName() == "Long Sword") {
+					.nextInt(Game.hero.getClassType().getWpn().getDmg() + Game.hero.getClassType().getAtkPwr());
+		} else if (Game.hero.getClassType().getWpn().getWpnName() == "Long Sword") {
 			playerDamage = new java.util.Random()
-					.nextInt(hero.getClassType().getWpn().getDmg() + hero.getClassType().getAtkPwr());
+					.nextInt(Game.hero.getClassType().getWpn().getDmg() + Game.hero.getClassType().getAtkPwr());
+		}
+		if (Game.hero.getClassType().getWpn().getWpnName() == "Dagger") {
+			playerDamage = new java.util.Random()
+					.nextInt(Game.hero.getClassType().getWpn().getDmg() + Game.hero.getClassType().getAtkPwr());
+		} else if (Game.hero.getClassType().getWpn().getWpnName() == "Long Sword") {
+			playerDamage = new java.util.Random()
+					.nextInt(Game.hero.getClassType().getWpn().getDmg() + Game.hero.getClassType().getAtkPwr());
+		}
+		if (Game.hero.getClassType().getWpn().getWpnName() == "Lance") {
+			playerDamage = new java.util.Random()
+					.nextInt(Game.hero.getClassType().getWpn().getDmg() + Game.hero.getClassType().getAtkPwr());
+		} else if (Game.hero.getClassType().getWpn().getWpnName() == "Long Sword") {
+			playerDamage = new java.util.Random()
+					.nextInt(Game.hero.getClassType().getWpn().getDmg() + Game.hero.getClassType().getAtkPwr());
 		}
 
 		mainTextArea.setText("You attacked the monster and did " + playerDamage + " damage!");

@@ -53,7 +53,7 @@ public class Player extends GameObject {
 					while (position != "win" && position != "lose" && position != "run") {
 						// loop while we are in battle
 						position = CombatClass.getPosition();
-						System.out.println(position);
+						System.out.println();
 					}
 					// HUD.HEALTH --;
 
