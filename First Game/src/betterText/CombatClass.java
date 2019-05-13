@@ -249,8 +249,8 @@ public class CombatClass {
 		hero = new Hero(Game.hero.getClassType().getClassName(), Game.hero.getClassType());
 		monster = monsterCage.getMonster("Rat");
 
-		hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
-		monster = monsterCage.getMonster("Rat Monster");
+		//hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
+		//monster = monsterCage.getMonster("Rat Monster");
 
 
 		playerHP = Game.hero.getClassType().getHp();
@@ -334,14 +334,14 @@ public class CombatClass {
 		if (Game.hero.getClassType().getWpn().getWpnName() == "Dagger") {
 			playerDamage = new java.util.Random()
 					.nextInt(Game.hero.getClassType().getWpn().getDmg() + Game.hero.getClassType().getAtkPwr());
-		} else if (Game.hero.getClassType().getWpn().getWpnName() == "Long Sword") {
+		} else if (Game.hero.getClassType().getWpn().getWpnName() == "Dual Daggers") {
 			playerDamage = new java.util.Random()
 					.nextInt(Game.hero.getClassType().getWpn().getDmg() + Game.hero.getClassType().getAtkPwr());
 		}
 		if (Game.hero.getClassType().getWpn().getWpnName() == "Lance") {
 			playerDamage = new java.util.Random()
 					.nextInt(Game.hero.getClassType().getWpn().getDmg() + Game.hero.getClassType().getAtkPwr());
-		} else if (Game.hero.getClassType().getWpn().getWpnName() == "Long Sword") {
+		} else if (Game.hero.getClassType().getWpn().getWpnName() == "Dragon Lance") {
 			playerDamage = new java.util.Random()
 					.nextInt(Game.hero.getClassType().getWpn().getDmg() + Game.hero.getClassType().getAtkPwr());
 		}
@@ -500,7 +500,7 @@ public class CombatClass {
 			case "monsterAttack":
 				switch (yourChoice) {
 				case "c1":
-					if (playerHP < 1) {
+					if (hero.getClassType().hp < 1) {
 						lose();
 					} else {
 						fight();
