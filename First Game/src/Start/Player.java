@@ -11,10 +11,10 @@ import textPart.CharGUI;
 import betterText.Hero;
 import textPart.RPGScreen;
 
+
 public class Player extends GameObject {
 	Random r = new Random();
 	Handler handler;
-//	CharGUI rpg = new CharGUI();
 	private Hero hero;
 
 	public Player(int x, int y, int z, ID id, Hero hero, Handler handler) {
@@ -62,6 +62,7 @@ public class Player extends GameObject {
 						Player.setHealth(CombatClass.getHealth());
 						handler.removeObject(tempObject);
 						HUD.HEALTH = Player.getHealth();
+						HUD.combatWin(1);
 					}
 					else {
 						// either lost or ran, set new hp values

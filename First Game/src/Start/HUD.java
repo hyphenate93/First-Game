@@ -12,7 +12,7 @@ public class HUD {
 	public static int HEALTH = Game.hero.getClassType().getHp();
 	private int greenValue = 255;
 	
-	private int score = 0;
+	private static int score = 0;
 	private int level = 1;
 
 	public void tick () {
@@ -37,10 +37,10 @@ public class HUD {
 		g.drawString("Level: " + level, 15, 96);
 	}
 	
-	public void setScore(int score) {
-		this.score = score;
+	public static void setScore(int score) {
+		HUD.score = score;
 	}
-	public int getScore() {
+	public static int getScore() {
 		return score;
 	}
 	public void setLevel(int level) {
@@ -48,5 +48,8 @@ public class HUD {
 	}
 	public int getLevel() {
 		return level;
+	}
+	public static void combatWin(int x) {
+		setScore(getScore()+x);
 	}
 }

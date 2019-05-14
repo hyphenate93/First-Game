@@ -24,6 +24,10 @@ public class HashTable {
 		// Arrays.fill(theArray, empty);
 	}
 	
+	public int size() {
+		return arraySize;
+	}
+	
     	
 
 	public void insert(Item itm) {
