@@ -43,8 +43,10 @@ public class CombatClass {
 	static Monster monster;
 	MonsterCage monsterCage = new MonsterCage();
 
-	public CombatClass() {
-
+	public CombatClass(String x) {
+		
+		//String currentEnemy = x;
+		
 		window = new JFrame();
 		window.setSize(640, 480);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -237,17 +239,17 @@ public class CombatClass {
 		weaponLabelName.setForeground(Color.white);
 		playerPanel.add(weaponLabelName);
 
-		playerSetup();
+		playerSetup(x);
 
 		window.setVisible(true);
 
 	}
 
-	public void playerSetup() {
+	public void playerSetup(String x) {
 
 
 		hero = new Hero(Game.hero.getClassType().getClassName(), Game.hero.getClassType());
-		monster = monsterCage.getMonster("Rat");
+		monster = monsterCage.getMonster(x);
 
 		//hero = new Hero("Andreas", grnRoom.getClass("Warrior"));
 		//monster = monsterCage.getMonster("Rat Monster");
@@ -545,7 +547,7 @@ public class CombatClass {
 	}
 
 	public static void main(String[] args) {
-		new CombatClass();
+		new CombatClass("rat");
 	}
 
 	public class InventoryHandler implements ActionListener {

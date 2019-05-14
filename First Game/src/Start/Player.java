@@ -16,7 +16,7 @@ public class Player extends GameObject {
 	Random r = new Random();
 	Handler handler;
 	private Hero hero;
-
+	private String currentEnemy;
 	public Player(int x, int y, int z, ID id, Hero hero, Handler handler) {
 		super(x, y, z, id);
 		this.handler = handler;
@@ -41,12 +41,13 @@ public class Player extends GameObject {
 		String position = "";
 		for (int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
-			if (tempObject.getId() == ID.BasicEnemy) {
+			if (tempObject.getId() == ID.BasicEnemy || tempObject.getId() == ID.RatMonster ) {
 				if (getBounds().intersects(tempObject.getBounds())) {
-
+					if (tempObject.getId() == ID.BasicEnemy) {currentEnemy = "Rat";}
+					if (tempObject.getId() == ID.RatMonster) {currentEnemy = "Rat Monster";}
 					// rpg.createGameScreen();
 
-					new CombatClass();
+					new CombatClass(currentEnemy);
 					// turn off velocity when we enter battle
 					handler.object.get(0).setVelX(0);
 					handler.object.get(0).setVelY(0);
@@ -66,7 +67,8 @@ public class Player extends GameObject {
 					}
 					else {
 						// either lost or ran, set new hp values
-						BasicEnemy.setHealth(CombatClass.getMonsterHealth());
+						if(tempObject.getId() == ID.BasicEnemy)BasicEnemy.setHealth(CombatClass.getMonsterHealth());
+						else if(tempObject.getId() == ID.RatMonster)RatMonster.setHealth(CombatClass.getMonsterHealth());
 						Player.setHealth(CombatClass.getHealth());
 						// move player back to original location
 						handler.object.get(0).setY(Game.WIDTH / 2 - 64);

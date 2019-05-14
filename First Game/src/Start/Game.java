@@ -45,6 +45,7 @@ public class Game extends Canvas implements Runnable {
 		// create the objects for the game IE heroes or enemies
 		handler.addObject(new Player(WIDTH / 2 - 64, HEIGHT / 2 - 64, hero.getClassType().getHp(), ID.Player, hero, handler));
 		handler.addObject(new BasicEnemy((WIDTH / 2 - 32), (HEIGHT / 2 - 32), 100, ID.BasicEnemy));
+		handler.addObject(new RatMonster(120, 120, ID.RatMonster));
 
 		r = new Random();
 		

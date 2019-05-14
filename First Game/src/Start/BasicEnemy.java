@@ -13,15 +13,13 @@ public class BasicEnemy extends GameObject {
 		velY = 0;
 		this.health = health;
 	}
-	
-	public Rectangle getBounds() {
-		return new Rectangle(x,y,16,16);
-	}
-	
 
+	public Rectangle getBounds() {
+		return new Rectangle(x, y, 16, 16);
+	}
 
 	public void tick() {
-		
+
 		x += velX;
 		y += velY;
 
@@ -34,18 +32,10 @@ public class BasicEnemy extends GameObject {
 	}
 
 	public void render(Graphics g) {
-		if(BasicEnemy.getHealth() > 0) {
+
 		g.setColor(Color.red);
 		g.fillRect(x, y, 16, 16);
-		}
-		else {
-			g.setColor(Color.black);
-			g.fillRect(0, 0, 0, 0 );
-			
-		}
-		
-		
+
 	}
-	
 
 }
